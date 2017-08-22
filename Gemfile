@@ -40,9 +40,11 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'capybara-screenshot'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
 end
 

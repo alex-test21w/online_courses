@@ -22,10 +22,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
     if @course.update(course_params)
       redirect_to courses_path
