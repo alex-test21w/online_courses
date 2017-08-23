@@ -13,5 +13,12 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery
+//= require jquery-ui
 //= require bootstrap-sprockets
+//= require jquery
+//= require jquery.knob
+//= require jquery.slimscroll
+//= require fastclick
+//= require adminlte
+//= require demo
 //= require_tree .

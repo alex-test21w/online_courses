@@ -1,0 +1,39 @@
+%header.main-header
+  = link_to root_path, method: :get, class: 'logo' do
+    %span.logo-mini
+      %b> A
+      LT
+    %span.logo-lg
+      %b> Admin
+      LTE
+  %nav.navbar.navbar-static-top
+    %a.sidebar-toggle{'data-toggle': 'push-menu', href: '#', role: 'button'}
+      %span.sr-only Toggle navigation
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        %li.dropdown.user.user-menu
+          %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}
+            = image_tag 'user2-160x160.jpg', class: 'user-image', alt: 'User Image'
+            %span.hidden-xs Alexander Pierce
+          %ul.dropdown-menu
+            %li.user-header
+              = image_tag 'user2-160x160.jpg', class: 'img-circle', alt: 'User Image'
+              %p
+                Alexander Pierce - Web Developer
+                %small Member since Nov. 2012
+            %li.user-body
+              .row
+                .col-xs-4.text-center
+                  %a{href: '#'} Followers
+                .col-xs-4.text-center
+                  %a{href: '#'} Sales
+                .col-xs-4.text-center
+                  %a{href: '#'} Friends
+            %li.user-footer
+              .pull-left
+                %a.btn.btn-default.btn-flat{:href => "#"} Profile
+              .pull-right
+                %a.btn.btn-default.btn-flat{:href => "#"} Sign out
+        %li
+          = link_to 'Log out'
+
