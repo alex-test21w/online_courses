@@ -1,22 +1,16 @@
 #courses-index
   %h1 Courses
 
-  = link_to 'Add Course', new_course_path, class: 'btn btn-default'
-
   - if @courses.present?
     %table.table.table-striped
       %tr
         %th Title
         %th Picture
-        %th Edit
-        %th Remove
 
       - @courses.each do |n|
         %tr
           %td= n.title
           %td= image_tag(n.picture.thumb)
-          %td= link_to 'edit', edit_course_path(n), class: 'btn btn-default'
-          %td= link_to 'delete', course_path(n), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
     = paginate @courses
   - else
     %h2 No Courses
