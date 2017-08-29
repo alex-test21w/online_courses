@@ -1,8 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe CoursesController, type: :controller do
+RSpec.describe Users::CoursesController, type: :controller do
+  let(:user) { create(:user) }
+
+  before { sign_in(user) }
+
   describe '#index' do
-    let!(:course) { create :course }
+    let!(:course) { create :course, user: user }
 
     before { get :index }
 
@@ -26,7 +30,7 @@ RSpec.describe CoursesController, type: :controller do
       before { post :create, params: params }
 
       it 'should redirect to courses list' do
-        expect(response).to redirect_to(courses_path)
+        expect(response).to redirect_to(users_courses_path)
       end
     end
 
@@ -43,7 +47,7 @@ RSpec.describe CoursesController, type: :controller do
   end
 
   describe '#edit' do
-    let(:course) { create :course }
+    let(:course) { create :course, user: user }
 
     before { get :edit, params: { id: course.id } }
 
@@ -53,7 +57,7 @@ RSpec.describe CoursesController, type: :controller do
   end
 
   describe '#update' do
-    let!(:course) { create :course, title: 'Title' }
+    let!(:course) { create :course, title: 'Title', user: user }
 
     context 'when success' do
       let(:params) { { title: 'New title' } }
@@ -62,7 +66,7 @@ RSpec.describe CoursesController, type: :controller do
 
       it 'should update record and redirect to courses list' do
         expect(course.reload.title).to eq 'New title'
-        expect(response).to redirect_to(courses_path)
+        expect(response).to redirect_to(users_courses_path)
         expect(assigns(:course)).to be_an_instance_of Course
       end
     end
@@ -80,11 +84,11 @@ RSpec.describe CoursesController, type: :controller do
   end
 
   describe '#destroy' do
-    let!(:course) { create :course }
+    let!(:course) { create :course, user: user }
 
     it 'should destroy record' do
-      expect{delete :destroy, params: { id: course.id }}.to change(Course, :count).by(-1)
-      expect(response).to redirect_to(courses_path)
+      expect{ delete :destroy, params: { id: course.id } }.to change(Course, :count).by(-1)
+      expect(response).to redirect_to(users_courses_path)
     end
   end
 end
