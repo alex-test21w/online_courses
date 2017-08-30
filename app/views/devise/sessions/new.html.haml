@@ -1,0 +1,32 @@
+%body.hold-transition.login-page
+  .login-box
+    .login-logo
+      = link_to new_user_session_path do
+        %b> Log in
+    .login-box-body
+      %p.login-box-msg Sign in to start your session
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group.has-feedback
+          = f.input :email, required: false, label: false, placeholder: 'Email', autofocus: true, input_html: { class: 'form-control' }
+          %span.glyphicon.glyphicon-envelope.form-control-feedback
+        .form-group.has-feedback
+          = f.input :password, required: false, label: false, placeholder: 'Password', autofocus: true, input_html: { class: 'form-control' }
+          %span.glyphicon.glyphicon-lock.form-control-feedback
+        .row
+          .col-xs-8
+            .checkbox.icheck
+              %label
+                = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+          .col-xs-4
+            = f.button :submit, 'Sign In', class: 'btn btn-primary btn-block btn-flat'
+      .social-auth-links.text-center
+        %p - OR -
+        %a.btn.btn-block.btn-social.btn-facebook.btn-flat{:href => "#"}
+          %i.fa.fa-facebook
+          Sign in using
+          Facebook
+        %a.btn.btn-block.btn-social.btn-google.btn-flat{:href => "#"}
+          %i.fa.fa-google-plus
+          Sign in using
+          Google+
+      = render 'devise/shared/links'

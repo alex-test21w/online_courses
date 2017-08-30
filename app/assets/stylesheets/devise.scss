@@ -1,0 +1,11 @@
+.register-page, .login-page {
+  input {
+    border-radius: 0 !important;
+  }
+}
+.login-page {
+  .checkbox label{
+    padding-left: 11px !important;
+    margin-top: -6px;
+  }
+}

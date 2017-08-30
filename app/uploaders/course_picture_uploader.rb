@@ -4,6 +4,6 @@ class CoursePictureUploader < BaseUploader
   end
 
   version :thumb do
-    process resize_and_pad: [450, 450]
+    process resize_and_pad: [284, 177]
   end
 end
