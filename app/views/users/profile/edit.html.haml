@@ -1,0 +1,16 @@
+.box.box-primary
+  .box-header.with-border
+    %h3.box-title Edit course
+  = simple_form_for current_user, url: users_profile_path do |f|
+    .box-body
+      .form-group
+        %br
+        %label Email
+        = f.input :email, label: false, placeholder: 'Enter email', input_html: { class: 'form-control' }
+        = f.simple_fields_for :profile do |profile|
+          %label First name
+          = profile.input :first_name, label: false, placeholder: 'Enter first name', input_html: { class: 'form-control' }
+          %label Last name
+          = profile.input :last_name, label: false, placeholder: 'Enter last name', input_html: { class: 'form-control' }
+    .box-footer
+      = f.submit 'Update profile', class: 'btn btn-primary'

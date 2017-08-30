@@ -1,0 +1,16 @@
+= content_for :h1_for_wrap do
+  %h3 User profile
+.row
+  .col-md-3
+    .box.box-primary
+      .box-body.box-profile
+        = image_tag 'user4-128x128.jpg', class: 'profile-user-img img-responsive img-circle'
+        %h3.profile-username.text-center
+          = current_user.first_name
+          = current_user&.last_name
+        %ul.list-group.list-group-unbordered
+          %li.list-group-item
+            %b Email
+            %a.pull-right
+              = current_user.email
+        = link_to 'Edit profile', edit_users_profile_path, method: :get, class: 'btn btn-primary btn-block'

@@ -18,10 +18,8 @@
     .wrapper
       = render 'layouts/partials/header'
       = render 'layouts/partials/sidebar'
-      .content-wrapper
-        %section.content-header
-        %section.content
-          = yield
+      = content_for :yield_content, yield
+      = wrap_with_h1
       %footer.main-footer
         .pull-right.hidden-xs
           %b Version

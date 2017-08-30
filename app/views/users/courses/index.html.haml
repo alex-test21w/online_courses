@@ -1,23 +1,22 @@
 #user-courses-index
-  = render 'layouts/partials/flash_messages'
-  %section.content-header
+  = content_for :h1_for_wrap do
     %h1.pull-left Courses
     = link_to 'Add Course', new_users_course_path, method: :get, class: 'btn btn-default pull-right'
-  %section.content
-    - if @courses.present?
-      %table.table.table-striped
-        %tr
-          %th Title
-          %th Picture
-          %th Edit
-          %th Remove
 
-        - @courses.each do |n|
-          %tr
-            %td= n.title
-            %td= image_tag(n.picture.thumb)
-            %td= link_to 'edit', edit_users_course_path(n), method: :get, class: 'btn btn-default'
-            %td= link_to 'delete', users_course_path(n), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
-      = paginate @courses
-    - else
-      %h2 No Courses
+  - if @courses.present?
+    %table.table.table-striped
+      %tr
+        %th Title
+        %th Picture
+        %th Edit
+        %th Remove
+
+      - @courses.each do |n|
+        %tr
+          %td= n.title
+          %td= image_tag(n.picture.thumb)
+          %td= link_to 'edit', edit_users_course_path(n), method: :get, class: 'btn btn-default'
+          %td= link_to 'delete', users_course_path(n), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
+    = paginate @courses
+  - else
+    %h2 No Courses

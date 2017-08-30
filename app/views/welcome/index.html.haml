@@ -1,3 +1,5 @@
+= content_for :h1_for_wrap, 'Home page'
+%br
 .box.box-widget
   .box-header.with-border
     .user-block
@@ -18,3 +20,4 @@
   .box-body{:style => ""}
     = image_tag 'photo2.png', class: 'img-responsive pad', alt: 'Photo'
     %h2 Course title
+    = params[:controller]
