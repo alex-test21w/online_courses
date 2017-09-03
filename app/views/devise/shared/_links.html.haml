@@ -1,3 +1,13 @@
+- if controller_name != 'passwords'
+  .social-auth-links.text-center
+    %p - OR -
+    = link_to user_facebook_omniauth_authorize_path(provider: 'facebook'), class: 'btn btn-block btn-social btn-facebook btn-flat' do
+      %i.fa.fa-facebook
+      Sign up using
+      Facebook
+    = link_to user_twitter_omniauth_authorize_path(provider: 'twitter'), class: 'btn btn-block btn-social btn-twitter' do
+      %i.fa.fa-twitter
+      Sign in with Twitter
 - if controller_name != 'sessions'
   = link_to 'I already have a membership', new_session_path(resource_name)
   %br/
@@ -11,7 +21,3 @@
 - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
   = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)
   %br/
-- if devise_mapping.omniauthable?
-  - resource_class.omniauth_providers.each do |provider|
-    = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider)
-    %br/

@@ -1,0 +1,13 @@
+#user-courses-index
+  = content_for :h1_for_wrap do
+    %h1.pull-left Course #{course.title} participants
+    = link_to 'Add subscription', course_subscriptions_path(course), method: :post, remote: true, id: 'subscription-button', class: 'btn btn-default pull-right', style: ('display: none' if current_user.participate_in?(course))
+
+  - if @users.present?
+    %table.table.table-striped{ id: 'partisipants-list' }
+      %tr
+        %th User
+        %th Action
+
+      - @users.each do |user|
+        = render 'participants/participant', user: user, course: course

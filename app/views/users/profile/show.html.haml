@@ -10,7 +10,8 @@
           = current_user&.last_name
         %ul.list-group.list-group-unbordered
           %li.list-group-item
-            %b Email
-            %a.pull-right
-              = current_user.email
+            - if current_user.email.present?
+              %b Email
+              %a.pull-right
+                = current_user.email
         = link_to 'Edit profile', edit_users_profile_path, method: :get, class: 'btn btn-primary btn-block'

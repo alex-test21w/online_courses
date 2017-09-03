@@ -8,6 +8,7 @@ AllCops:
     - 'bin/*'
     - 'spec/*'
     - 'db/schema.rb'
+    - 'db/migrate/*'
   TargetRubyVersion: 2.2
   DisplayCopNames: true
 

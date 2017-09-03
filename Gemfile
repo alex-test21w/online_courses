@@ -21,6 +21,9 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'jquery-ui-rails'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
 gem 'mini_magick'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'devise', '~> 4.3'
 
 group :development, :test do
@@ -31,6 +34,7 @@ group :development, :test do
   gem 'faker'
   gem 'ffaker'
   gem 'pry-rails', '~> 0.3.6'
+  gem 'dotenv-rails', require: 'dotenv/rails-now'
 end
 
 group :development do
@@ -40,6 +44,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bullet'
 end
 
 group :test do

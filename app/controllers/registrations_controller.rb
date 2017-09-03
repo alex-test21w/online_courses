@@ -1,8 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
     build_resource({})
-    self.resource.profile = Profile.new
-    respond_with self.resource
+    resource.profile = Profile.new
+    respond_with resource
   end
 
   private

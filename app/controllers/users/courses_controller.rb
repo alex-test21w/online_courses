@@ -4,15 +4,15 @@ class Users::CoursesController < Users::BaseController
   PER_PAGE = 5
 
   def index
-    @courses = current_user.courses.recent.page(params[:page]).per(params[:per_page] || PER_PAGE)
+    @courses = current_user.authored_courses.recent.page(params[:page]).per(params[:per_page] || PER_PAGE)
   end
 
   def new
-    @course = current_user.courses.build
+    @course = current_user.authored_courses.build
   end
 
   def create
-    @course = current_user.courses.build(course_params)
+    @course = current_user.authored_courses.build(course_params)
 
     if @course.save
       redirect_to users_courses_path
@@ -40,7 +40,7 @@ class Users::CoursesController < Users::BaseController
   private
 
   def find_course
-    @course = current_user.courses.find(params[:id])
+    @course = current_user.authored_courses.find(params[:id])
   end
 
   def course_params

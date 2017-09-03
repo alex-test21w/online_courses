@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830103959) do
+ActiveRecord::Schema.define(version: 20170831163457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "course_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "course_id"], name: "index_course_users_on_user_id_and_course_id", unique: true
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -34,6 +42,16 @@ ActiveRecord::Schema.define(version: 20170830103959) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "social_profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "uid"
+    t.string "service_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "service_name"], name: "index_social_profiles_on_user_id_and_service_name", unique: true
+    t.index ["user_id"], name: "index_social_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -47,7 +65,6 @@ ActiveRecord::Schema.define(version: 20170830103959) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

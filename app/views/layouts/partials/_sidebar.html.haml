@@ -24,6 +24,10 @@
             %i.fa.fa-dashboard
             %span Dashboard
         %li.treeview
-          = link_to users_courses_path, method: :get do
+          = link_to courses_path, method: :get do
             %i.fa.fa-files-o
             %span Courses
+        %li.treeview
+          = link_to users_courses_path, method: :get do
+            %i.fa.fa-files-o
+            %span My courses
