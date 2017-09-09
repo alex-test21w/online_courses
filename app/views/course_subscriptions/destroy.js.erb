@@ -1,2 +1,3 @@
-$('#course-participant-<%= current_user.id %>').remove();
-$('#subscription-button').show();
+course_feed = $('#course-feed-claim-<%= course.id %>');
+course_feed.empty();
+course_feed.replaceWith('<%= j render('courses/course', course: course) %>');

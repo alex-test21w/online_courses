@@ -1,16 +1,14 @@
-class CourseSubscriptionsController < ApplicationController
-  def create
-    course.participants << current_user
-  end
-
-  def destroy
-    course.course_users.where(user_id: current_user).first.destroy
-  end
+class CourseSubscriptionsController < CourseParticipantSubscriptionsController
+  before_action :authenticate_user!
+  before_action :if_student_is_outcast, only: :create
 
   private
 
-  def course
-    @course ||= Course.find(params[:course_id])
+  def if_student_is_outcast
+    return unless current_user.participate_in?(course) && participant.outcast?
+
+    redirect_to courses_path
+
+    flash[:error] = 'You was excluded from the course'
   end
-  helper_method :course
 end

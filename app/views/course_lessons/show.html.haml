@@ -1,0 +1,31 @@
+#course-lessons-show
+  .nav-tabs-custom
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_1"} Lesson
+      %li.pull-right
+        = button_to 'Deliver homework', course_lesson_homeworks_path(course, @lesson), remote: true, class: 'btn btn-default'
+    .tab-content
+      #tab_1.tab-pane.active
+        %b Title
+        %p= @lesson.title
+
+      #tab_1.tab-pane.active
+        %b Descriprion
+        %p= @lesson.descriprion
+
+      #tab_1.tab-pane.active
+        %b Picture
+        %p= image_tag(@lesson.picture.thumb)
+
+      #tab_1.tab-pane.active
+        %b Synopsis
+        %p= @lesson.synopsis
+
+      #tab_1.tab-pane.active
+        %b Homework
+        %p= @lesson.homework
+
+#modal-lesson-homework.modal.fade{ style: 'display: none;' }
+
+

@@ -2,17 +2,17 @@
   %h1 Courses
 
   - if @courses.present?
-    %table.table.table-striped
+    %table.table.table-striped{ id: 'courses-list' }
       %tr
         %th Title
         %th Picture
+        %th Action
+        %th Lessons
         %th Participants
 
-      - @courses.each do |n|
-        %tr
-          %td= n.title
-          %td= image_tag(n.picture.thumb)
-          %td= link_to 'Participants', course_participants_path(n), method: :get
+      - @courses.each do |course|
+        = render 'courses/course', course: course
+
     = paginate @courses
   - else
     %h2 No Courses

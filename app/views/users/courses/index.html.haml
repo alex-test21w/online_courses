@@ -8,6 +8,8 @@
       %tr
         %th Title
         %th Picture
+        %th Visibility
+        %th Lessons
         %th Edit
         %th Remove
 
@@ -15,6 +17,9 @@
         %tr
           %td= n.title
           %td= image_tag(n.picture.thumb)
+          %td= n.active? ? 'Visible' : 'Invisible'
+          %td
+            = link_to 'Lessons', users_course_lessons_path(n), method: :get, class: 'btn btn-default'
           %td= link_to 'edit', edit_users_course_path(n), method: :get, class: 'btn btn-default'
           %td= link_to 'delete', users_course_path(n), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
     = paginate @courses

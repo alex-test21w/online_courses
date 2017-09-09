@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831163457) do
+ActiveRecord::Schema.define(version: 20170908091543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20170831163457) do
     t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "outcast", default: false
+    t.boolean "subscription", default: true
     t.index ["user_id", "course_id"], name: "index_course_users_on_user_id_and_course_id", unique: true
   end
 
@@ -31,6 +33,29 @@ ActiveRecord::Schema.define(version: 20170831163457) do
     t.string "picture"
     t.integer "user_id"
     t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
+  create_table "homeworks", force: :cascade do |t|
+    t.text "description", null: false
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "lesson_id"
+    t.index ["lesson_id"], name: "index_homeworks_on_lesson_id"
+    t.index ["user_id"], name: "index_homeworks_on_user_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "position", null: false
+    t.text "descriprion"
+    t.string "picture"
+    t.string "synopsis"
+    t.text "homework"
+    t.integer "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_lessons_on_course_id"
   end
 
   create_table "profiles", force: :cascade do |t|

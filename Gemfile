@@ -25,6 +25,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'devise', '~> 4.3'
+gem 'acts_as_list'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

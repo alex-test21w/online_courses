@@ -32,7 +32,7 @@ class Users::CoursesController < Users::BaseController
   end
 
   def destroy
-    @course.destroy
+    @course.destroy!
 
     redirect_to users_courses_path
   end
@@ -44,6 +44,6 @@ class Users::CoursesController < Users::BaseController
   end
 
   def course_params
-    params.require(:course).permit(:title, :picture)
+    params.require(:course).permit(:title, :picture, :active)
   end
 end

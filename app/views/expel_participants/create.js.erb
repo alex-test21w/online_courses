@@ -1,0 +1,3 @@
+partisipant_expel = $('#course-participant-<%= user.id %>');
+partisipant_expel.empty();
+partisipant_expel.replaceWith('<%= j render('participants/participant', course: course, user: user) %>');

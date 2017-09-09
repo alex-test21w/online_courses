@@ -4,5 +4,9 @@ FactoryGirl.define do
     active { true }
 
     user
+
+    trait :with_course_users do
+      after(:create) { |course| course.course_users }
+    end
   end
 end

@@ -1,0 +1,16 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      %button.close{'aria-label': 'Close', 'data-dismiss': 'modal', type: 'button'}
+        %span{'aria-hidden': 'true'} ×
+      %h4.modal-title Homework
+    .modal-body
+      = simple_form_for :homework, url: course_lesson_homeworks_path, method: :post, html: { id: 'lesson_homework_form' } do |f|
+        .box-body
+          .form-group
+            %br
+            %label Description
+            = f.input :description, as: :text, label: false, placeholder: 'Enter description', input_html: { class: 'form-control' }
+    .modal-footer
+      %button.btn.btn-default.pull-left{'data-dismiss': 'modal', type: 'button'} Close
+      %button.btn.btn-primary{type: 'submit', form: 'lesson_homework_form'} Save changes

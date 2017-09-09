@@ -1,0 +1,19 @@
+#course-lessons-index
+  %h1 Lessons
+
+  - if @lessons.present?
+    %table.table.table-striped{ id: 'courses-list' }
+      %tr
+        %th Title
+        %th Picture
+        %th View
+
+      - @lessons.each do |lesson|
+        %tr
+          %td= lesson.title
+          %td= image_tag(lesson.picture.thumb)
+          %td= link_to 'View lesson', course_lesson_path(course_id: course, id: lesson), method: :get, class: 'btn btn-default'
+
+    = paginate @lessons
+  - else
+    %h2 No lessons

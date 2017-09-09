@@ -1,0 +1,30 @@
+#course-lesson-index
+  = content_for :h1_for_wrap do
+    %h1.pull-left Lessons
+    = link_to 'Add Lesson', new_users_course_lesson_path(course), method: :get, class: 'btn btn-default pull-right'
+
+  - if @lessons.present?
+    %table.table.table-striped
+      %tr
+        %th Title
+        %th Position
+        %th Descriprion
+        %th Picture
+        %th Synopsis
+        %th Homework
+        %th Edit
+        %th Delete
+
+      - @lessons.each do |n|
+        %tr
+          %td= n.title
+          %td= n.position
+          %td= n.descriprion
+          %td= image_tag(n.picture.thumb)
+          %td= n.synopsis
+          %td= n.homework
+          %td= link_to 'edit', edit_users_course_lesson_path(course_id: course.id, id: n.id), method: :get, class: 'btn btn-default'
+          %td= link_to 'delete', users_course_lesson_path(course.id, n.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
+    = paginate @lessons
+  - else
+    %h2 No lessons

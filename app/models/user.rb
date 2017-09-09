@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one  :profile
   has_many :authored_courses, class_name: 'Course', foreign_key: :user_id, dependent: :destroy
   has_many :social_profiles
+  has_many :homeworks
 
   has_many :course_users
   has_many :participated_courses, through: :course_users, source: :course
@@ -18,5 +19,15 @@ class User < ApplicationRecord
 
   def participate_in?(course)
     course_users.exists?(course_id: course.id)
+  end
+
+  def subscription_in?(course, user)
+    if user.participate_in?(course)
+      course_users.where(course_id: course.id).first.subscription?
+    end
+  end
+
+  def expel_in?(course)
+    course_users.where(course_id: course.id).first.outcast?
   end
 end

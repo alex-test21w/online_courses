@@ -4,6 +4,8 @@
       %br
       %label Title
       = f.input :title, label: false, placeholder: 'Enter title', input_html: { class: 'form-control' }
+      %label Visibility
+      = f.input :active, label: false, as: :radio_buttons
     .form-group
       %label{for: 'exampleInputFile'} File input
       = f.file_field :picture, id: 'exampleInputFile'
