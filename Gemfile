@@ -26,6 +26,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'devise', '~> 4.3'
 gem 'acts_as_list'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -35,7 +36,6 @@ group :development, :test do
   gem 'faker'
   gem 'ffaker'
   gem 'pry-rails', '~> 0.3.6'
-  gem 'dotenv-rails', require: 'dotenv/rails-now'
 end
 
 group :development do
