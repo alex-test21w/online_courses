@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   include Omniauthable
 
   devise :database_authenticatable, :registerable,
@@ -21,8 +22,8 @@ class User < ApplicationRecord
     course_users.exists?(course_id: course.id)
   end
 
-  def subscription_in?(course, user)
-    if user.participate_in?(course)
+  def subscription_in?(course)
+    if participate_in?(course)
       course_users.where(course_id: course.id).first.subscription?
     end
   end

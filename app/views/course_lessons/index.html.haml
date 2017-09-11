@@ -12,8 +12,9 @@
         %tr
           %td= lesson.title
           %td= image_tag(lesson.picture.thumb)
-          %td= link_to 'View lesson', course_lesson_path(course_id: course, id: lesson), method: :get, class: 'btn btn-default'
-
+          %td
+            - if can? :manage, course
+              = link_to 'View lesson', course_lesson_path(course_id: course, id: lesson), method: :get, class: 'btn btn-default'
     = paginate @lessons
   - else
     %h2 No lessons

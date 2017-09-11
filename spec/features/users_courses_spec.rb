@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Courses Page', type: :feature do
-  let(:user) { create :user }
+  let(:user) { create :user, :add_trainer }
   before { login_as(user) }
 
   feature 'Index Page' do
