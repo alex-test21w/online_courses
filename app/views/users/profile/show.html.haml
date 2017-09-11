@@ -15,3 +15,21 @@
               %a.pull-right
                 = current_user.email
         = link_to 'Edit profile', edit_users_profile_path, method: :get, class: 'btn btn-primary btn-block'
+
+  - if @courses.present?
+    .col-md-6
+      .box
+        .box-header
+          %h3.box-title Courses
+
+        .box-body.no-padding
+          %table.table
+            %tbody
+              %tr
+                %th Title
+
+              - @courses.each do |n|
+                %tr
+                  %td
+                    = link_to course_path(n.course), method: :get do
+                      = n.course.title

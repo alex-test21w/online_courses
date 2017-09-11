@@ -31,6 +31,8 @@ RSpec.describe CourseLessonsController, type: :controller do
 
   describe '#show' do
     context 'when is success' do
+      let!(:course_user) { create(:course_user, user_id: user.id, course_id: course.id, subscription: true) }
+
       before { get :show, params: { id: lesson.id, course_id: course.id } }
 
       specify do

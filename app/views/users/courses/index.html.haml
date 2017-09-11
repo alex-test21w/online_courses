@@ -1,7 +1,8 @@
 #user-courses-index
   = content_for :h1_for_wrap do
     %h1.pull-left Courses
-    = link_to 'Add Course', new_users_course_path, method: :get, class: 'btn btn-default pull-right'
+    - if can? :manage, current_user
+      = link_to 'Add Course', new_users_course_path, method: :get, class: 'btn btn-default pull-right'
 
   - if @courses.present?
     %table.table.table-striped

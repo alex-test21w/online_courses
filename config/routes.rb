@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :courses, only: :index do
+  resources :courses, only: [:index, :show] do
     resources :participants, only: :index
     resource  :participant_subscriptions, only: [:create, :destroy], controller: :course_participant_subscriptions
     resource  :subscriptions, only: [:create, :destroy], controller: :course_subscriptions

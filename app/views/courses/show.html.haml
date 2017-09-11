@@ -1,0 +1,16 @@
+#course-show
+  .nav-tabs-custom
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_1"} Course
+      %li.pull-right
+        = link_to 'Participants', course_participants_path(@course), method: :get, class: 'btn btn-default', id: 'participants_button'
+        = link_to 'Lessons', course_lessons_path(@course), method: :get, class: 'btn btn-default', id: 'lessons_button'
+    .tab-content
+      #tab_1.tab-pane.active
+        %b Title
+        %p= @course.title
+
+      #tab_1.tab-pane.active
+        %b Picture
+        %p= image_tag(@course.picture.thumb)

@@ -1,4 +1,8 @@
 class Users::ProfileController < Users::BaseController
+  def show
+    @courses = current_user.course_users.includes(:course).where(subscription: true).recent
+  end
+
   def update
     if current_user.update(profile_params)
       redirect_to users_profile_path

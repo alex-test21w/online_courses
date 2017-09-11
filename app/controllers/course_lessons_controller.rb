@@ -1,12 +1,16 @@
 class CourseLessonsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_lesson, only: :show
+  before_action :load_lesson, only: :show
   before_action :if_student_is_outcast, only: [:index, :show]
 
   PER_PAGE = 10
 
   def index
     @lessons = course.lessons.page(params[:page]).per(params[:per_page] || PER_PAGE)
+  end
+
+  def show
+    authorize! :manage, course
   end
 
   private
@@ -16,7 +20,7 @@ class CourseLessonsController < ApplicationController
   end
   helper_method :course
 
-  def find_lesson
+  def load_lesson
     @lesson = course.lessons.find(params[:id])
   end
 
