@@ -1,6 +1,7 @@
 class Users::ProfileController < Users::BaseController
   def show
-    @courses = current_user.course_users.includes(:course).where(subscription: true).recent
+    @courses = current_user.course_users.includes(:course).only_subscriptions.recent
+    @activities = current_user.activities_for_me.includes(:trackable, owner: :profile).recent.decorate
   end
 
   def update

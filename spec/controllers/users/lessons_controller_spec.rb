@@ -33,7 +33,8 @@ RSpec.describe Users::LessonsController, type: :controller do
             descriprion: 'descriprion',
             picture: 'picture',
             synopsis: 'synopsis',
-            homework: 'homework'
+            homework: 'homework',
+            start_date: Date.today + 3
           },
           course_id: course.id
         }

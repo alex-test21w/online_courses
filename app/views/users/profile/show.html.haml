@@ -16,20 +16,47 @@
                 = current_user.email
         = link_to 'Edit profile', edit_users_profile_path, method: :get, class: 'btn btn-primary btn-block'
 
-  - if @courses.present?
-    .col-md-6
-      .box
-        .box-header
-          %h3.box-title Courses
+  .col-md-9
+    .nav-tabs-custom
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#courses"} Courses
+        %li
+          %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#activity"} Activity
 
-        .box-body.no-padding
-          %table.table
-            %tbody
-              %tr
-                %th Title
+      .tab-content
+        #courses.tab-pane.active
+          - if @courses.present?
+            .box
+              .box-header
+                %h3.box-title You are subscribed to the courses:
 
-              - @courses.each do |n|
-                %tr
-                  %td
-                    = link_to course_path(n.course), method: :get do
-                      = n.course.title
+              .box-body.no-padding
+                %table.table
+                  %tbody
+                    %tr
+                      %th Title
+
+                    - @courses.each do |n|
+                      %tr
+                        %td
+                          = link_to course_path(n.course), method: :get do
+                            = n.course.title
+
+          - else
+            %h1 You are not subscribed to courses
+
+        #activity.tab-pane
+          - if @activities.size > 0
+            - @activities.each do |activity|
+              .post.clearfix
+                .user-block
+                  = image_tag('user7-128x128', class: 'img img-circle img-bordered-sm', alt: 'User Image')
+                  %span.username= activity.username
+                  %span.description
+                    Sent you a message -
+                    = time_ago_in_words(activity.created_at)
+                %p=activity.message
+                = render "users/activities/#{activity.partial_name}", trackable: activity.trackable
+          - else
+            %h1 No activities

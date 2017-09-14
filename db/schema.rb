@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910174857) do
+ActiveRecord::Schema.define(version: 20170913202254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "owner_id"
+    t.integer "trackable_id"
+    t.string "trackable_type"
+    t.string "kind"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kind"], name: "index_activities_on_kind"
+    t.index ["owner_id"], name: "index_activities_on_owner_id"
+    t.index ["recipient_id"], name: "index_activities_on_recipient_id"
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+  end
 
   create_table "course_users", force: :cascade do |t|
     t.integer "user_id"
@@ -41,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170910174857) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "lesson_id"
+    t.string "state"
     t.index ["lesson_id"], name: "index_homeworks_on_lesson_id"
     t.index ["user_id"], name: "index_homeworks_on_user_id"
   end
@@ -48,14 +64,18 @@ ActiveRecord::Schema.define(version: 20170910174857) do
   create_table "lessons", force: :cascade do |t|
     t.string "title", null: false
     t.integer "position", null: false
-    t.text "descriprion"
+    t.text "description"
     t.string "picture"
     t.string "synopsis"
     t.text "homework"
     t.integer "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
+    t.datetime "start_date", null: false
     t.index ["course_id"], name: "index_lessons_on_course_id"
+    t.index ["start_date"], name: "index_lessons_on_start_date"
+    t.index ["state"], name: "index_lessons_on_state"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -101,6 +121,8 @@ ActiveRecord::Schema.define(version: 20170910174857) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "authentication_token"
+    t.index ["authentication_token"], name: "index_users_on_authentication_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

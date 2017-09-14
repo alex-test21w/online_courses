@@ -51,6 +51,6 @@ class Users::LessonsController < Users::BaseController
   helper_method :course
 
   def lesson_params
-    params.require(:lesson).permit(:title, :position, :descriprion, :picture, :synopsis, :homework)
+    params.require(:lesson).permit(:title, :position, :description, :picture, :synopsis, :homework, :start_date)
   end
 end

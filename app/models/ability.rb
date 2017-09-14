@@ -5,9 +5,9 @@ class Ability
     user ||= User.new
 
     if user.has_role?(:trainer)
-      can :manage, :all
+      can :manage, User
     else
-      can [:read, :update, :destroy]
+      can [:read, :update, :destroy], User
     end
 
     can :manage, Course do |course|

@@ -23,4 +23,15 @@ module ApplicationHelper
 
     html.join("\n").html_safe
   end
+
+  def status_of_homework(state)
+    case state
+      when 'approved'
+        'states/state_green'
+      when 'rejected'
+        'states/state_red'
+      else
+        'states/state_yellow'
+    end
+  end
 end

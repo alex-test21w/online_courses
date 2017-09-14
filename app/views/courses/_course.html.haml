@@ -4,7 +4,7 @@
       = course.title
   %td= image_tag(course.picture.thumb)
   %td
-    - if user_signed_in? && course.user_id != current_user.id
+    - if course.user_id != current_user.id
       = link_to 'Add subscription', course_subscriptions_path(course), method: :post, remote: true, class: 'btn btn-default', id: 'feed-claim-button', style: ('display: none' if current_user.subscription_in?(course))
       = link_to 'Unsubscription', course_subscriptions_path(course), method: :delete, remote: true, id: 'unsubscribe-button', class: 'btn btn-default', style: ('display: none' unless current_user.subscription_in?(course))
   %td= link_to 'Participants', course_participants_path(course), method: :get, class: 'btn btn-default'

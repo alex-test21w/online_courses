@@ -8,10 +8,12 @@
       %tr
         %th Title
         %th Position
-        %th Descriprion
+        %th Start date
+        %th Description
         %th Picture
         %th Synopsis
         %th Homework
+        %th Homeworks of students
         %th Edit
         %th Delete
 
@@ -19,10 +21,12 @@
         %tr
           %td= n.title
           %td= n.position
-          %td= n.descriprion
+          %td= n.start_date&.strftime('%d.%m.%Y')
+          %td= n.description
           %td= image_tag(n.picture.thumb)
           %td= n.synopsis
           %td= n.homework
+          %td= link_to 'Homeworks', users_course_lesson_homeworks_path(course_id: course.id, lesson_id: n.id), method: :get, class: 'btn btn-default'
           %td= link_to 'edit', edit_users_course_lesson_path(course_id: course.id, id: n.id), method: :get, class: 'btn btn-default'
           %td= link_to 'delete', users_course_lesson_path(course.id, n.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
     = paginate @lessons

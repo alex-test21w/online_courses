@@ -1,13 +1,10 @@
 #user-courses-index
   = content_for :h1_for_wrap do
     %h1.pull-left Course #{course.title} participants
-    - if course.user_id != current_user.id
-      = link_to 'Add subscription', course_participant_subscriptions_path(course), method: :post, remote: true, id: 'subscription-button', class: 'btn btn-default pull-right', style: ('display: none' if current_user.subscription_in?(course))
 
   %table.table.table-striped{ id: 'partisipants-list' }
     %tr
       %th User
-      %th Action
       - if course.user_id == current_user.id
         %th Action for author of course
     - if @users.present?

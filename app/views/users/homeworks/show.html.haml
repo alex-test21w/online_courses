@@ -1,0 +1,17 @@
+#lesson-homework-show
+  .nav-tabs-custom
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_1"} Homeworks
+    .tab-content
+      #tab_1.tab-pane.active
+        %b Status
+        %p= @homework.state
+
+      #tab_1.tab-pane.active
+        %b Participant of course
+        %p= "#{@homework.user.first_name} #{@homework.user.last_name}"
+
+      #tab_1.tab-pane.active
+        %b Description
+        %p= @homework.description

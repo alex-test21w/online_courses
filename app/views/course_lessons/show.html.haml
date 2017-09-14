@@ -11,8 +11,12 @@
         %p= @lesson.title
 
       #tab_1.tab-pane.active
+        %b Start date
+        %p= @lesson.start_date&.strftime('%d.%m.%Y')
+
+      #tab_1.tab-pane.active
         %b Descriprion
-        %p= @lesson.descriprion
+        %p= @lesson.description
 
       #tab_1.tab-pane.active
         %b Picture

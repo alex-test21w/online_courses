@@ -1,13 +1,14 @@
-- flash.each do |type, message|
-  - if type == 'success'
-    %div{style: 'padding: 20px 30px; background: rgb(112, 219, 112); z-index: 999999; font-size: 16px; font-weight: 600;'}
-      %p{style: 'color: rgba(255, 255, 255, 0.9); display: inline-block; margin: 0px; text-decoration: none;' }
-        = message
-  - elsif type == 'error'
-    %div{style: 'padding: 20px 30px; background: rgb(255, 26, 26); z-index: 999999; font-size: 16px; font-weight: 600;'}
-      %p{style: 'color: rgba(255, 255, 255, 0.9); display: inline-block; margin: 0px; text-decoration: none;' }
-        = message
-  - else
-    %div{style: 'padding: 20px 30px; background-color: #d9edf7; z-index: 999999; font-size: 16px; font-weight: 600;'}
-      %p{style: 'color: #31708f; display: inline-block; margin: 0px; text-decoration: none;' }
-        = message
+.flash-error
+  - flash.each do |type, message|
+    - if type == 'success'
+      %div{style: 'padding: 20px 30px; background: rgb(112, 219, 112); z-index: 999999; font-size: 16px; font-weight: 600;'}
+        %p{style: 'color: rgba(255, 255, 255, 0.9); display: inline-block; margin: 0px; text-decoration: none;' }
+          = message
+    - elsif type == 'error'
+      %div{style: 'padding: 20px 30px; background: rgb(255, 26, 26); z-index: 999999; font-size: 16px; font-weight: 600;'}
+        %p{style: 'color: rgba(255, 255, 255, 0.9); display: inline-block; margin: 0px; text-decoration: none;' }
+          = message
+    - else
+      %div{style: 'padding: 20px 30px; background-color: #d9edf7; z-index: 999999; font-size: 16px; font-weight: 600;'}
+        %p{style: 'color: #31708f; display: inline-block; margin: 0px; text-decoration: none;' }
+          = message

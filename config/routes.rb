@@ -3,9 +3,19 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  namespace :api do
+    namespace :v1 do
+      resources :courses, only: :index
+      resources :auth_tokens, only: :create
+
+      namespace :user do
+        resources :courses, only: :index
+      end
+    end
+  end
+
   resources :courses, only: [:index, :show] do
     resources :participants, only: :index
-    resource  :participant_subscriptions, only: [:create, :destroy], controller: :course_participant_subscriptions
     resource  :subscriptions, only: [:create, :destroy], controller: :course_subscriptions
     resource  :feed_claims, only: [:create, :destroy], controller: :course_feed_claims
     resource  :expel_participants, only: :create
@@ -17,9 +27,16 @@ Rails.application.routes.draw do
 
   namespace :users do
     resource  :profile, controller: :profile
+    resources :activities, only: :index
 
     resources :courses do
-      resources :lessons
+      resources :lessons do
+        resources :homeworks, only: [:index, :show, :update]
+      end
     end
+  end
+
+  scope 'user' do
+    resources :homeworks, only: :show
   end
 end

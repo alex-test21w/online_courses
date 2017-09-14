@@ -6,5 +6,9 @@ FactoryGirl.define do
     trait :add_trainer do
       after(:create) { |user| user.add_role(:trainer) }
     end
+
+    trait :user_skip_validate do
+      to_create { |instance| instance.save(validate: false) }
+    end
   end
 end
