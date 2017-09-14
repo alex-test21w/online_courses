@@ -1,0 +1,4 @@
+%h1 Hello, #{@recipient.first_name}
+
+%h2 New lesson for review: #{@lesson.title}
+%p Please visit #{link_to @lesson.title, course_lesson_url(@lesson.course_id, @lesson)}

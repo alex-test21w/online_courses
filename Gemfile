@@ -42,6 +42,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'pry-rails', '~> 0.3.6'
   gem 'dotenv-rails', require: 'dotenv/rails-now'
+  gem 'letter_opener'
 end
 
 group :development do
