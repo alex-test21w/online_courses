@@ -6,8 +6,10 @@
       = f.input :title, label: false, placeholder: 'Enter title', input_html: { class: 'form-control' }
       %label Position
       = f.input :position, collection: 1..course.lessons_count, label: false, placeholder: 'Enter title', input_html: { class: 'form-control' }
+      %label Start date
+      = f.input :start_date, as: :string, label: false, html5: true, input_html: { class: 'form-control', id: 'lesson_new_start_date' }
       %label Descriprion
-      = f.input :descriprion, as: :text, label: false, placeholder: 'Enter title', input_html: { class: 'form-control' }
+      = f.input :description, as: :text, label: false, placeholder: 'Enter title', input_html: { class: 'form-control' }
       %label Synopsis
       = f.input :synopsis, as: :text, label: false, placeholder: 'Enter title', input_html: { class: 'form-control' }
       %label Homework

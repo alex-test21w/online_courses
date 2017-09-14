@@ -21,4 +21,11 @@
 //= require fastclick
 //= require adminlte
 //= require demo
+//= require bootstrap-datepicker
 //= require_tree .
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});

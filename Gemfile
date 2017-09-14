@@ -28,6 +28,10 @@ gem 'devise', '~> 4.3'
 gem 'acts_as_list'
 gem 'cancancan', '~> 2.0'
 gem 'rolify'
+gem 'active_model_serializers', '~> 0.10.6'
+gem 'aasm', '~> 4.12', '>= 4.12.2'
+gem 'bootstrap-datepicker-rails'
+gem 'draper', '~> 3.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

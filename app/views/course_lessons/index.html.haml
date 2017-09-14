@@ -5,12 +5,14 @@
     %table.table.table-striped{ id: 'courses-list' }
       %tr
         %th Title
+        %th Start date
         %th Picture
         %th View
 
       - @lessons.each do |lesson|
         %tr
           %td= lesson.title
+          %td= lesson.start_date&.strftime('%d.%m.%Y')
           %td= image_tag(lesson.picture.thumb)
           %td
             - if can? :manage, course

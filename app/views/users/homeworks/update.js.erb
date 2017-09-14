@@ -1,0 +1,11 @@
+course_feed = $('#lesson-homework-<%= params[:id] %> #state_image').parent('span');
+course_feed.empty();
+course_feed.append('<%= image_tag(status_of_homework(params[:state]), id: 'state_image') %>');
+
+<% if flash[:error].present? %>
+  $('.flash-error').empty();
+  $('.content-wrapper').prepend("<%= j render 'layouts/partials/flash_messages' %>");
+  <%= flash.clear %>
+<% else %>
+  $('.content-wrapper').find('.flash-error').empty();
+<% end %>

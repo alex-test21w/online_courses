@@ -1,0 +1,22 @@
+#lesson-homewroks-index
+  = content_for :h1_for_wrap do
+    %h1.pull-left Homeworks
+
+  - if @homeworks.present?
+    %table.table.table-striped
+      %tr
+        %th State
+        %th Participant
+        %th Show
+
+      - @homeworks.each do |n|
+        %tr{ id: "lesson-homework-#{n.id}" }
+          %td
+            %span= image_tag(status_of_homework(n.state), id: 'state_image')
+            = select_tag 'state', options_for_select(Homework.aasm.states.map(&:name), selected: n.state), class: 'form-control'
+          %td= "#{n.user.first_name} #{n.user.last_name}"
+          %td= link_to 'Show', users_course_lesson_homework_path(id: n, course_id: course.id, lesson_id: lesson.id), method: :get, class: 'btn btn-default', id: 'show-homework'
+
+    = paginate @homeworks
+  - else
+    %h2 No homeworks
