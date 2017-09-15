@@ -1,0 +1,4 @@
+%h1 Hello, #{@recipient.first_name}
+
+%h2 Your homework of lesson #{@homework.lesson.title} was approved.
+%p You can see your homework on the #{link_to 'link', homework_url(@homework)}

@@ -12,9 +12,17 @@ class Lesson < ApplicationRecord
 
   validates :title, :position, :start_date, presence: true
 
+  after_commit :send_notifications
+
   aasm column: :state do
     state :wait_realization, initial: true
     state :load_wait
     state :material_loaded
+  end
+
+  private
+
+  def send_notifications
+    ScheduleNewLessonNotificationWorker.perform_async(id)
   end
 end

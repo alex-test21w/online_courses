@@ -1,0 +1,4 @@
+%h1 Hello, #{@recipient.first_name}
+
+%h2 You participant of the #{link_to 'course', course_url(@course)}
+%p We inform you that lesson #{link_to @lesson.title, course_lesson_url(@course, @lesson)} will begin through 1 day.

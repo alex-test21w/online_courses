@@ -13,12 +13,22 @@ class Homework < ApplicationRecord
     state :approved
     state :rejected
 
-    event :approve do
+    event :approve, after_commit: :approve_homework do
       transitions to: :approved
     end
 
-    event :reject do
+    event :reject, after_commit: :reject_homework do
       transitions to: :rejected
     end
+  end
+
+  private
+
+  def approve_homework
+    ApproveHomeworkNotificationWorker.perform_async(id)
+  end
+
+  def reject_homework
+    RejectHomeworkNotificationWorker.perform_async(id)
   end
 end

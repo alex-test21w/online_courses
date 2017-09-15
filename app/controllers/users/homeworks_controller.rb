@@ -11,7 +11,11 @@ class Users::HomeworksController < Users::BaseController
 
   def update
     if STATES.include?(params[:state])
-      @homework.update!(state: params[:state])
+      if params[:state] == 'approved'
+        @homework.approve!
+      else
+        @homework.reject!
+      end
 
       send_homework_to_activities
     else

@@ -32,6 +32,14 @@ gem 'active_model_serializers', '~> 0.10.6'
 gem 'aasm', '~> 4.12', '>= 4.12.2'
 gem 'bootstrap-datepicker-rails'
 gem 'draper', '~> 3.0'
+# Background processing + web interface for sidekiq
+gem 'sidekiq', '~> 5.0', '>= 5.0.4'
+gem 'sidekiq-status'
+gem 'sidekiq-failures'
+gem 'sidekiq-unique-jobs'
+gem 'sinatra', require: false
+gem 'redis-namespace', '~> 1.5', '>= 1.5.3'
+gem 'sidekiq-cron'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -42,6 +50,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'pry-rails', '~> 0.3.6'
   gem 'dotenv-rails', require: 'dotenv/rails-now'
+  gem 'letter_opener'
 end
 
 group :development do

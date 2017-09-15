@@ -1,14 +1,14 @@
 class Course < ApplicationRecord
   mount_uploader :picture, CoursePictureUploader
 
-  scope :recent, -> { order(created_at: :desc) }
-  scope :visible, -> { where(active: true) }
+  scope :recent,      -> { order(created_at: :desc) }
+  scope :visible,     -> { where(active: true) }
 
   belongs_to :user
 
   has_many :course_users
   has_many :participants, -> { where('course_users.subscription = ?', true) }, through: :course_users, source: :user
-  has_many :lessons, -> { order(position: :asc) }
+  has_many :lessons,      -> { order(position: :asc) }
 
   validates :title, presence: true, length: { maximum: 20 }
 
