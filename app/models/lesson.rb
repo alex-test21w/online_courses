@@ -12,7 +12,7 @@ class Lesson < ApplicationRecord
 
   validates :title, :position, :start_date, presence: true
 
-  after_create :send_notifications
+  after_commit :send_notifications
 
   aasm column: :state do
     state :wait_realization, initial: true
@@ -23,8 +23,6 @@ class Lesson < ApplicationRecord
   private
 
   def send_notifications
-    course.course_users.not_outcast.each do |course_users|
-      NotificationsMailer.new_lesson(self, course_users.user).deliver
-    end
+    ScheduleNewLessonNotificationWorker.perform_async(id)
   end
 end

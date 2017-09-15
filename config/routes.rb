@@ -1,7 +1,12 @@
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
+
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
 
   root 'welcome#index'
+
+  mount Sidekiq::Web, at: '/sidekiq'
 
   namespace :api do
     namespace :v1 do
