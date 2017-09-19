@@ -8,5 +8,9 @@ FactoryGirl.define do
     start_date  { Date.today + 3 }
 
     course
+
+    after(:build) do |lesson|
+      lesson.class.skip_callback(:commit, :after, :send_notifications, raise: false)
+    end
   end
 end

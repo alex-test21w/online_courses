@@ -1,0 +1,53 @@
+{
+  "resource": "Auth users through twitter",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/api/v1/auth_tokens",
+  "description": "Authenticating user with invalid params",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "service_name",
+      "description": "service name"
+    },
+    {
+      "required": true,
+      "name": "access_token",
+      "description": "access token"
+    },
+    {
+      "required": true,
+      "name": "secret_key",
+      "description": "secret key"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/auth_tokens",
+      "request_body": "service_name=&access_token=a67667436ebf56a4b9549667&secret_key=36d56d3bcb96d1d02508fde8",
+      "request_headers": {
+        "Accept": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 406,
+      "response_status_text": "Not Acceptable",
+      "response_body": "{\n  \"error\": {\n    \"message\": \"Invalid params\"\n  }\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-cache"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/api/v1/auth_tokens\" -d 'service_name=&access_token=a67667436ebf56a4b9549667&secret_key=36d56d3bcb96d1d02508fde8' -X POST \\\n\t-H \"Accept: application/json\"",
+      "request_headers_text": "Accept: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8\nCache-Control: no-cache"
+    }
+  ]
+}
