@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :courses, only: :index
-      resources :auth_tokens, only: :create
+      resource  :auth_tokens, only: :create
+      resource  :auth_users, only: :create
 
       namespace :user do
         resources :courses, only: :index
+        resource  :course_subscriptions, only: :create
       end
     end
   end

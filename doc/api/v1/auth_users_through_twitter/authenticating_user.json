@@ -1,0 +1,53 @@
+{
+  "resource": "Auth users through twitter",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/api/v1/auth_tokens",
+  "description": "Authenticating user",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "service_name",
+      "description": "service name"
+    },
+    {
+      "required": true,
+      "name": "access_token",
+      "description": "access token"
+    },
+    {
+      "required": true,
+      "name": "secret_key",
+      "description": "secret key"
+    }
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/auth_tokens",
+      "request_body": "service_name=twitter&access_token=bac0addf18326eb047a229fe&secret_key=11d32c148fc6a8d70270e02d",
+      "request_headers": {
+        "Accept": "application/json"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 201,
+      "response_status_text": "Created",
+      "response_body": "{\n  \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1MDY4MTI3OTl9.wXOwwnTB_PimW3iJ3_pIiPeAuErLaMNcBkoHXqyTgRE\"\n}",
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "max-age=0, private, must-revalidate"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"http://localhost:3000/api/v1/auth_tokens\" -d 'service_name=twitter&access_token=bac0addf18326eb047a229fe&secret_key=11d32c148fc6a8d70270e02d' -X POST \\\n\t-H \"Accept: application/json\"",
+      "request_headers_text": "Accept: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8\nCache-Control: max-age=0, private, must-revalidate"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ class BaseUploader < CarrierWave::Uploader::Base
 
   def store_dir
     subfolder = Rails.env.test? ? 'test/' : ''
-    "system/uploads/#{subfolder}#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{subfolder}#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   def default_url

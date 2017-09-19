@@ -1,18 +1,30 @@
 class Api::V1::AuthTokensController < Api::V1::BaseController
-  def create
-    auth_token = authenticate_by_email
+  skip_before_action :authenticate_request!
 
-    if auth_token.present?
-      render json: {success: true, auth_token: auth_token}, status: 201
+  rescue_from Twitter::Error, RuntimeError do |e|
+    render_error(e.message, 406)
+  end
+
+  rescue_from Twitter::Error::Unauthorized, with: :user_not_authenticated
+
+  def create
+    if params[:service_name].present? && params[:access_token].present? && params[:secret_key].present?
+      auth_token = authenticate_through_social_networks
+
+      if auth_token.present?
+        respond_with_success({ auth_token: auth_token }, 201)
+      else
+        raise Exceptions::NotAuthenticatedError
+      end
     else
-      raise NotAuthorized
+      render_error 'Invalid params', 406
     end
   end
 
   private
 
-  def authenticate_by_email
-    user = User.find_by_email(params[:email])
-    user.authentication_token if user.present? && user.valid_password?(params[:password])
+  def authenticate_through_social_networks
+    api_client = SocialServices::Base.service_for(params[:service_name]).new(params[:access_token], params[:secret_key])
+    api_client.authenticate
   end
 end
