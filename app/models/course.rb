@@ -13,7 +13,7 @@ class Course < ApplicationRecord
   validates :title, presence: true, length: { maximum: 20 }
 
   def lessons_count
-    self.lessons.count + 1
+    lessons.size + 1
   end
 
   def find_participant(user)

@@ -21,15 +21,23 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :courses, only: [:index, :show] do
+  resources :courses, only: %i[index show] do
     resources :participants, only: :index
-    resource  :subscriptions, only: [:create, :destroy], controller: :course_subscriptions
-    resource  :feed_claims, only: [:create, :destroy], controller: :course_feed_claims
+    resource  :subscriptions, only: %i[create destroy], controller: :course_subscriptions
+    resource  :feed_claims, only: %i[create destroy], controller: :course_feed_claims
     resource  :expel_participants, only: :create
 
-    resources :lessons, only: [:index, :show], controller: :course_lessons do
+    resources :lessons, only: %i[index show], controller: :course_lessons do
       resource :homeworks, only: :create, controller: :lesson_homeworks
     end
+  end
+
+  resources :lessons, controller: :course_lessons, only: [] do
+    resources :comments, only: %i[create destroy]
+  end
+
+  resources :homeworks, controller: :lesson_homeworks, only: [] do
+    resources :comments, only: %i[create destroy]
   end
 
   namespace :users do
@@ -38,12 +46,12 @@ Rails.application.routes.draw do
 
     resources :courses do
       resources :lessons do
-        resources :homeworks, only: [:index, :show, :update]
+        resources :homeworks, only: %i[index update]
       end
     end
   end
 
   scope 'user' do
-    resources :homeworks, only: :show
+    resources :homeworks, only: %i[index show]
   end
 end

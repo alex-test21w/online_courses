@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913202254) do
+ActiveRecord::Schema.define(version: 20170921203115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20170913202254) do
     t.index ["owner_id"], name: "index_activities_on_owner_id"
     t.index ["recipient_id"], name: "index_activities_on_recipient_id"
     t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body", null: false
+    t.integer "user_id"
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "course_users", force: :cascade do |t|
@@ -122,6 +133,7 @@ ActiveRecord::Schema.define(version: 20170913202254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "authentication_token"
+    t.string "picture"
     t.index ["authentication_token"], name: "index_users_on_authentication_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

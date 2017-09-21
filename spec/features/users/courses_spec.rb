@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Courses Page', type: :feature do
+RSpec.feature 'Courses of user', type: :feature do
   let(:user) { create :user, :add_trainer }
   before { login_as(user) }
 

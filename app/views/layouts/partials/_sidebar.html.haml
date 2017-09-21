@@ -3,21 +3,15 @@
     - if user_signed_in?
       .user-panel
         .pull-left.image
-          = image_tag 'user2-160x160.jpg', class: 'img-circle', alt: 'User Imag'
+          = image_tag current_user.picture.thumb, class: 'img-circle', alt: 'User Imag'
         .pull-left.info
           %p
             = current_user.first_name
             = current_user&.last_name
-          %a{:href => "#"}
+          = link_to '#' do
             %i.fa.fa-circle.text-success
             Online
-      %form.sidebar-form{:action => "#", :method => "get"}
-        .input-group
-          %input.form-control{:name => "q", :placeholder => "Search...", :type => "text"}/
-          %span.input-group-btn
-            %button#search-btn.btn.btn-flat{:name => "search", :type => "submit"}
-              %i.fa.fa-search
-      %ul.sidebar-menu{"data-widget" => "tree"}
+      %ul.sidebar-menu{'data-widget': 'tree'}
         %li.header MAIN NAVIGATION
         %li.active.treeview
           = link_to root_path, method: :get do
@@ -31,3 +25,7 @@
           = link_to users_courses_path, method: :get do
             %i.fa.fa-files-o
             %span My courses
+        %li.treeview
+          = link_to homeworks_path, method: :get do
+            %i.fa.fa-files-o
+            %span My homeworks

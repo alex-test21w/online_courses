@@ -4,8 +4,8 @@ RSpec.resource 'Course subscription', document: :v1 do
   header 'Accept', 'application/json'
   header 'X-Auth-Token', :jwt_token
 
-  let(:user)        { create :user }
-  let(:jwt_token)   { auth_token(user.id) }
+  let(:user)         { create :user }
+  let(:jwt_token)    { auth_token(user.id) }
   let!(:course_user) { create(:course_user, course: course_2, user: user) }
 
   let!(:course_1) { create(:course) }

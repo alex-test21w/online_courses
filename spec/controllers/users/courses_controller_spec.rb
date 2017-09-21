@@ -87,7 +87,7 @@ RSpec.describe Users::CoursesController, type: :controller do
     let!(:course) { create :course, user: user }
 
     it 'should destroy record' do
-      expect{ delete :destroy, params: { id: course.id } }.to change(Course, :count).by(-1)
+      expect { delete :destroy, params: { id: course.id } }.to change(Course, :count).by(-1)
       expect(response).to redirect_to(users_courses_path)
     end
   end

@@ -1,11 +1,11 @@
-%tr{ id: "course-feed-claim-#{course.id}" }
+%tr{ id: "course-subscription-#{course.id}" }
   %td
     = link_to course_path(course.id), method: :get do
       = course.title
   %td= image_tag(course.picture.thumb)
   %td
     - if course.user_id != current_user.id
-      = link_to 'Add subscription', course_subscriptions_path(course), method: :post, remote: true, class: 'btn btn-default', id: 'feed-claim-button', style: ('display: none' if current_user.subscription_in?(course))
-      = link_to 'Unsubscription', course_subscriptions_path(course), method: :delete, remote: true, id: 'unsubscribe-button', class: 'btn btn-default', style: ('display: none' unless current_user.subscription_in?(course))
+      = link_to 'Add subscription', course_subscriptions_path(course), method: :post, remote: true, class: 'btn btn-default course-subscription-button', style: ('display: none' if current_user.subscription_in?(course))
+      = link_to 'Unsubscription', course_subscriptions_path(course), method: :delete, remote: true, class: 'btn btn-default course-unsubscribe-button', style: ('display: none' unless current_user.subscription_in?(course))
   %td= link_to 'Participants', course_participants_path(course), method: :get, class: 'btn btn-default'
   %td= link_to 'Lessons', course_lessons_path(course), method: :get, class: 'btn btn-default'

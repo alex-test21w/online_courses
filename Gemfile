@@ -37,6 +37,7 @@ gem 'twitter', '~> 6.1'
 gem 'jwt'
 # API documentation
 gem 'apitome'
+gem 'rspec_api_documentation'
 # Background processing + web interface for sidekiq
 gem 'sidekiq', '~> 5.0', '>= 5.0.4'
 gem 'sidekiq-status'
@@ -45,7 +46,6 @@ gem 'sidekiq-unique-jobs'
 gem 'sinatra', require: false
 gem 'redis-namespace', '~> 1.5', '>= 1.5.3'
 gem 'sidekiq-cron'
-gem 'rspec_api_documentation'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -80,6 +80,7 @@ group :test do
   gem 'capybara-screenshot'
   gem 'capybara-webkit'
   gem 'database_cleaner'
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

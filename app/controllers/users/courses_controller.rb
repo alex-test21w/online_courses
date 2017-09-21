@@ -1,6 +1,6 @@
 class Users::CoursesController < Users::BaseController
-  before_action :find_course, only: [:edit, :update, :destroy]
-  authorize_resource only: [:new, :create]
+  before_action :find_course, only: %i[edit update destroy]
+  authorize_resource only: %i[new create]
 
   PER_PAGE = 5
 
