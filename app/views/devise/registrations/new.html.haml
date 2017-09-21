@@ -22,6 +22,9 @@
         .form-group.has-feedback
           = f.input :password_confirmation, required: true, label: false, placeholder: 'Retype password', input_html: { class: 'form-control' }
           %span.glyphicon.glyphicon-log-in.form-control-feedback
+        .form-group.has-feedback
+          = f.input :picture, as: :file, label: false, input_html: { class: 'form-control' }
+          %span.glyphicon.glyphicon-envelope.form-control-feedback
         .row
           .col-xs-8
           .col-xs-4

@@ -20,14 +20,14 @@ RSpec.resource 'Auth users', document: :v1 do
       do_request
 
       expect(params).to eq({
-                               'email'    => 'aa@aa.aa',
-                               'password' => '123321123'
-                           })
+        'email'    => 'aa@aa.aa',
+        'password' => '123321123'
+      })
 
       expect(status).to eq 201
       expect(response_body).to eq({
                                      auth_token: AuthToken.encode(user_id: user.id)
-                                   }.to_json)
+                                  }.to_json)
     end
 
     context 'with wrong params' do
@@ -38,7 +38,7 @@ RSpec.resource 'Auth users', document: :v1 do
 
         expect(status).to eq 406
         expect(response_body).to eq({
-                                        error: { message: 'Invalid email or password' }
+                                       error: { message: 'Invalid email or password' }
                                     }.to_json)
       end
     end
@@ -52,7 +52,7 @@ RSpec.resource 'Auth users', document: :v1 do
 
         expect(status).to eq 401
         expect(response_body).to eq({
-                                        'error': { 'message': 'Not Authenticated' }
+                                       'error': { 'message': 'Not Authenticated' }
                                     }.to_json)
       end
     end

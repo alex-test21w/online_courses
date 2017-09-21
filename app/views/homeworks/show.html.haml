@@ -2,7 +2,7 @@
   .nav-tabs-custom
     %ul.nav.nav-tabs
       %li.active
-        %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_1"} Homework
+        = link_to 'Homework', '#tab_1', 'aria-expanded': 'true', 'data-toggle': 'tab'
     .tab-content
       #tab_1.tab-pane.active
         %b Status
@@ -13,3 +13,21 @@
       #tab_1.tab-pane.active
         %b Description
         %p= @homework.description
+
+  - if @comments.present?
+    - @comments.each do |comment|
+      .box-footer.box-comments
+        .box-comment
+          = image_tag(current_user.picture.thumb, alt: 'User Image', class: 'img img-circle img-sm')
+          .comment-text
+            - if can? :manage, comment
+              = link_to homework_comment_path(@homework, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-box-tool pull-right' do
+                %i.fa.fa-times
+            %span.username #{comment.user.first_name} #{comment.user.last_name}
+            = comment.body
+
+  .box-footer
+    = simple_form_for [@homework, Comment.new] do |f|
+      = image_tag(current_user.picture.thumb, alt: 'Alt Text', class: 'img img-responsive img-circle img-sm')
+      .img-push
+        = f.input :body, as: :string, label: false, input_html: { class: 'form-control input-sm', placeholder: 'Press enter to post comment' }

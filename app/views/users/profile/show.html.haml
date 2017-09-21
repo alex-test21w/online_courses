@@ -4,7 +4,7 @@
   .col-md-3
     .box.box-primary
       .box-body.box-profile
-        = image_tag 'user4-128x128.jpg', class: 'profile-user-img img-responsive img-circle'
+        = image_tag current_user.picture.thumb, class: 'profile-user-img img-responsive img-circle'
         %h3.profile-username.text-center
           = current_user.first_name
           = current_user&.last_name
@@ -20,9 +20,9 @@
     .nav-tabs-custom
       %ul.nav.nav-tabs
         %li.active
-          %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#courses"} Courses
+          = link_to 'Courses', '#courses', 'aria-expanded': 'true', 'data-toggle': 'tab'
         %li
-          %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#activity"} Activity
+          = link_to 'Activity', '#activity', 'aria-expanded': 'true', 'data-toggle': 'tab'
 
       .tab-content
         #courses.tab-pane.active
@@ -51,7 +51,7 @@
             - @activities.each do |activity|
               .post.clearfix
                 .user-block
-                  = image_tag('user7-128x128', class: 'img img-circle img-bordered-sm', alt: 'User Image')
+                  = image_tag(current_user.picture.thumb, class: 'img img-circle img-bordered-sm', alt: 'User Image')
                   %span.username= activity.username
                   %span.description
                     Sent you a message -

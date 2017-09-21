@@ -1,6 +1,6 @@
 class Activity < ApplicationRecord
-  KIND_HOMEWORK_APPROVED = 'approved'
-  KIND_HOMEWORK_REJECTED = 'rejected'
+  KIND_HOMEWORK_APPROVED = 'approved'.freeze
+  KIND_HOMEWORK_REJECTED = 'rejected'.freeze
 
   belongs_to :recipient, class_name: 'User', foreign_key: :recipient_id
   belongs_to :owner,     class_name: 'User', foreign_key: :owner_id

@@ -1,3 +1,3 @@
-course_feed = $('#course-feed-claim-<%= course.id %>');
+course_feed = $('#course-subscription-<%= course.id %>');
 course_feed.empty();
 course_feed.replaceWith('<%= j render('courses/course', course: course) %>');

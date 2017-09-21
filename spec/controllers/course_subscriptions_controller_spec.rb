@@ -18,7 +18,7 @@ RSpec.describe CourseSubscriptionsController, type: :controller do
     end
 
     context 'when is failure' do
-      let!(:course_user) { create :course_user, user_id: user.id, course_id: course.id, outcast: true  }
+      let!(:course_user) { create :course_user, user_id: user.id, course_id: course.id, outcast: true }
       let(:course) { create :course, user_id: user.id }
 
       before { post :create, params: { course_id: course.id } }

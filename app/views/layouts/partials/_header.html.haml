@@ -12,13 +12,13 @@
         - if user_signed_in?
           %li.dropdown.user.user-menu
             %a.dropdown-toggle{'data-toggle': 'dropdown', href: '#'}
-              = image_tag 'user2-160x160.jpg', class: 'user-image', alt: 'User Image'
+              = image_tag current_user.picture.thumb, class: 'user-image', alt: 'User Image'
               %span.hidden-xs
                 = current_user.first_name
                 = current_user&.last_name
             %ul.dropdown-menu
               %li.user-header
-                = image_tag 'user2-160x160.jpg', class: 'img-circle', alt: 'User Image'
+                = image_tag current_user.picture.thumb, class: 'img-circle', alt: 'User Image'
                 %p
                   = current_user.first_name
                   = current_user&.last_name

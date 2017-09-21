@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Users::LessonsController, type: :controller do
-  let(:user) { create(:user) }
-  let!(:lesson) { create(:lesson, title: 'Init title', course: course ) }
-  let(:course) { create(:course, user_id: user.id) }
+  let(:user)    { create(:user) }
+  let!(:lesson) { create(:lesson, title: 'Init title', course: course) }
+  let(:course)  { create(:course, user_id: user.id) }
 
   before { sign_in(user) }
 
@@ -96,7 +96,7 @@ RSpec.describe Users::LessonsController, type: :controller do
 
   describe '#destroy' do
     it 'should destroy record' do
-      expect{ delete :destroy, params: { id: lesson.id, course_id: course.id } }.to change(Lesson, :count).by(-1)
+      expect { delete :destroy, params: { id: lesson.id, course_id: course.id } }.to change(Lesson, :count).by(-1)
       expect(response).to redirect_to(users_course_lessons_path(course))
     end
   end

@@ -1,5 +1,5 @@
 class Users::HomeworksController < Users::BaseController
-  before_action :load_homework, only: [:show, :update]
+  before_action :load_homework, only: :update
 
   PER_PAGE = 10
 

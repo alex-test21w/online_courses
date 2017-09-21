@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :course do
-    title  { Faker::Lorem.characters(10) }
-    active { true }
+    sequence(:title) { |n| "Course title #{n}" }
+    active           { true }
 
     user
 
-    trait :with_course_users do
-      after(:create) { |course| course.course_users }
+    trait :with_picture do
+      picture { File.new("#{Rails.root}/spec/fixtures/pixel.png") }
     end
   end
 end

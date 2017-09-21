@@ -38,20 +38,18 @@ class CourseSubscriptionsController < ApplicationController
   def add_missing_email
     if request.xhr?
       render partial: 'course_subscriptions/missing_email'
-    else
-      if params[:user][:email].present?
-        if current_user.update(email: params[:user][:email])
-          flash[:success] = 'Your email was successfully created'
-        else
-          flash[:error] = current_user.errors.full_messages.first
-        end
-
-        redirect_to courses_path
+    elsif params[:user][:email].present?
+      if current_user.update(email: params[:user][:email])
+        flash[:success] = 'Your email was successfully created'
       else
-        flash[:error] = 'Your email cant be empty'
-
-        redirect_to courses_path
+        flash[:error] = current_user.errors.full_messages.first
       end
+
+      redirect_to courses_path
+    else
+      flash[:error] = 'Your email cant be empty'
+
+      redirect_to courses_path
     end
   end
 end

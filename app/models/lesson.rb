@@ -7,6 +7,7 @@ class Lesson < ApplicationRecord
 
   has_many :homeworks
   has_many :activities, as: :trackable
+  has_many :comments, as: :commentable
 
   acts_as_list scope: :course
 

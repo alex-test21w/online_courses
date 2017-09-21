@@ -15,7 +15,9 @@ class Users::ProfileController < Users::BaseController
   private
 
   def profile_params
-    params.require(:user).permit(:email, :password, :password_confirmation,
-      profile_attributes: [:id, :first_name, :last_name])
+    params.require(:user).permit(
+      :email, :picture, :password, :password_confirmation,
+      profile_attributes: %i[id first_name last_name]
+    )
   end
 end

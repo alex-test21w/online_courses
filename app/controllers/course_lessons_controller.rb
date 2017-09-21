@@ -1,7 +1,8 @@
 class CourseLessonsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_lesson, only: :show
-  before_action :if_student_is_outcast, only: [:index, :show]
+  before_action :load_comments, only: :show
+  before_action :if_student_is_outcast, only: %i[index show]
 
   PER_PAGE = 10
 
@@ -22,6 +23,10 @@ class CourseLessonsController < ApplicationController
 
   def load_lesson
     @lesson = course.lessons.find(params[:id])
+  end
+
+  def load_comments
+    @comments = @lesson.comments.includes(user: :profile)
   end
 
   def participant

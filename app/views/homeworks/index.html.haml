@@ -1,0 +1,23 @@
+#homework-index
+  %h1 Homeworks
+
+  - if @homework.present?
+    %table.table.table-striped
+      %tr
+        %th Id
+        %th State
+        %th Lesson
+        %th Show
+
+      - @homework.each do |homework|
+        %tr
+          %td= homework.id
+          %td= homework.state
+          %td= link_to homework.lesson.title, course_lesson_path(homework.lesson.course, homework.lesson)
+          %td= link_to 'Show homework', homework_path(homework), method: :get
+
+    = paginate @homework
+
+  - else
+
+    %h2 No Homeworks

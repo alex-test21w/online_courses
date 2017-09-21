@@ -49,33 +49,33 @@ class Api::V1::BaseController < ActionController::Base
     render json: data, status: status
   end
 
-  def render_success(data, status_code = 200)
+  def render_success(data, status_code=200)
     render json: { data: data },
            status: status_code
   end
 
   def respond_with_error(object, status=422)
-    render json: {success: false, errors: object.errors, errors_messages: object.errors.full_messages}, status: status
+    render json: { success: false, errors: object.errors, errors_messages: object.errors.full_messages }, status: status
   end
 
-  def render_error(text, status_code = 422)
-    render json: { error:  { message: text } },
+  def render_error(text, status_code=422)
+    render json: { error: { message: text } },
            status: status_code
   end
 
   def respond_with_not_found
-    render json: {success: false, message: 'Cant found record'}, status: 404
+    render json: { success: false, message: 'Cant found record' }, status: 404
   end
 
   def respond_with_internal_error(exception)
-    response = {success: false, message: 'Internal error'}
-    response.merge!(debug: exception.message) unless Rails.env.production?
+    response = { success: false, message: 'Internal error' }
+    response[:debug] = exception.message unless Rails.env.production?
 
     render json: response, status: 500
   end
 
   def respond_with_not_authorized
-    render json: {success: false, message: 'Not Authorized'}, status: 401
+    render json: { success: false, message: 'Not Authorized' }, status: 401
   end
 
   def authentication_timeout
