@@ -2,7 +2,7 @@
   .nav-tabs-custom
     %ul.nav.nav-tabs
       %li.active
-        %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_1"} Course
+        = link_to 'Course', '#tab_1', 'aria-expanded': 'true', 'data-toggle': 'tab'
       %li.pull-right
         = link_to 'Participants', course_participants_path(@course), method: :get, class: 'btn btn-default', id: 'participants_button'
         = link_to 'Lessons', course_lessons_path(@course), method: :get, class: 'btn btn-default', id: 'lessons_button'

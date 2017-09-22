@@ -35,7 +35,7 @@ RSpec.describe Users::CoursesController, type: :controller do
     end
 
     context 'when failure' do
-      let(:params) { { course: { title: 'Title' * 10 } } }
+      let(:params) { { course: { title: '' } } }
 
       before { post :create, params: params }
 
@@ -72,7 +72,7 @@ RSpec.describe Users::CoursesController, type: :controller do
     end
 
     context 'when failure' do
-      let(:params) { { title: 'New title' * 10 } }
+      let(:params) { { title: '' } }
 
       before { put :update, params: { id: course.id, course: params } }
 

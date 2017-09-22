@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :lesson do
     sequence(:title) { |n| "Lesson title #{n}" }
-    position         { rand(10000) }
-    description      { FFaker::Book.description }
-    synopsis         { FFaker::Book.description }
-    homework         { FFaker::Book.description }
+    position         { 1 }
+    description      { FFaker::Lorem.paragraphs }
+    synopsis         { FFaker::Lorem.paragraph }
+    homework         { FFaker::Lorem.paragraphs }
     start_date       { Date.today + 3 }
 
     course

@@ -2,7 +2,7 @@
   .nav-tabs-custom
     %ul.nav.nav-tabs
       %li.active
-        %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_1"} Lesson
+        = link_to 'Lesson', '#tab_1', 'aria-expanded': 'true', 'data-toggle': 'tab'
       %li.pull-right
         = button_to 'Deliver homework', course_lesson_homeworks_path(course, @lesson), remote: true, class: 'btn btn-default'
     .tab-content

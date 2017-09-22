@@ -10,7 +10,7 @@ class Course < ApplicationRecord
   has_many :participants, -> { where('course_users.subscription = ?', true) }, through: :course_users, source: :user
   has_many :lessons,      -> { order(position: :asc) }
 
-  validates :title, presence: true, length: { maximum: 20 }
+  validates :title, presence: true, length: { maximum: 100 }
 
   def lessons_count
     lessons.size + 1

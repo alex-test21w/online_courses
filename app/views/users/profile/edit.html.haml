@@ -7,6 +7,8 @@
         %br
         %label Email
         = f.input :email, label: false, placeholder: 'Enter email', input_html: { class: 'form-control' }
+        %label Avatar
+        = f.input :picture, label: false, input_html: { class: 'form-control' }
         = f.simple_fields_for :profile do |profile|
           %label First name
           = profile.input :first_name, label: false, placeholder: 'Enter first name', input_html: { class: 'form-control' }

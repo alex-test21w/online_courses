@@ -9,26 +9,22 @@
         %th Title
         %th Position
         %th Start date
-        %th Description
         %th Picture
-        %th Synopsis
-        %th Homework
         %th Homeworks of students
         %th Edit
         %th Delete
 
-      - @lessons.each do |n|
+      - @lessons.each do |lesson|
         %tr
-          %td= n.title
-          %td= n.position
-          %td= n.start_date&.strftime('%d.%m.%Y')
-          %td= n.description
-          %td= image_tag(n.picture.thumb)
-          %td= n.synopsis
-          %td= n.homework
-          %td= link_to 'Homeworks', users_course_lesson_homeworks_path(course_id: course.id, lesson_id: n.id), method: :get, class: 'btn btn-default'
-          %td= link_to 'edit', edit_users_course_lesson_path(course_id: course.id, id: n.id), method: :get, class: 'btn btn-default'
-          %td= link_to 'delete', users_course_lesson_path(course.id, n.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
+          %td
+            = link_to users_course_lesson_path(course, lesson) do
+              = lesson.title
+          %td= lesson.position
+          %td= lesson.start_date.strftime('%d.%m.%Y')
+          %td= image_tag(lesson.picture.thumb)
+          %td= link_to 'Homeworks', users_course_lesson_homeworks_path(course_id: course, lesson_id: lesson), method: :get, class: 'btn btn-default'
+          %td= link_to 'edit', edit_users_course_lesson_path(course_id: course, id: lesson), method: :get, class: 'btn btn-default'
+          %td= link_to 'delete', users_course_lesson_path(course, lesson), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default'
     = paginate @lessons
   - else
     %h2 No lessons

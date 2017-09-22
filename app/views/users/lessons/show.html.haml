@@ -1,0 +1,30 @@
+#users-lessons-show
+  .nav-tabs-custom
+    %ul.nav.nav-tabs
+      %li.active
+        = link_to 'Course', '#tab_1', 'aria-expanded': 'true', 'data-toggle': 'tab'
+
+    .tab-content
+      #tab_1.tab-pane.active
+        %b Title
+        %p= @lesson.title
+
+      #tab_1.tab-pane.active
+        %b Start date
+        %p= @lesson.start_date.strftime('%d.%m.%Y')
+
+      #tab_1.tab-pane.active
+        %b Description
+        %p= @lesson.description
+
+      #tab_1.tab-pane.active
+        %b Picture
+        %p= image_tag(@lesson.picture.thumb)
+
+      #tab_1.tab-pane.active
+        %b Synopsis
+        %p= @lesson.synopsis
+
+      #tab_1.tab-pane.active
+        %b Homework
+        %p= @lesson.homework

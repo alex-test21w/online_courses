@@ -1,5 +1,5 @@
 class Users::LessonsController < Users::BaseController
-  before_action :find_lesson, only: %i[edit update destroy]
+  before_action :find_lesson, only: %i[show edit update destroy]
 
   PER_PAGE = 10
 
