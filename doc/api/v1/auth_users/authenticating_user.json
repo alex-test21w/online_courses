@@ -33,13 +33,16 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiZXhwIjoxNTA2OTE2NDYzfQ.TAK4OfiSIlB80HUfGMO-F2CoZOgypHToi1W_5zXAuh8\"\n}",
+      "response_body": "{\n  \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE1MDczNTEyMDV9.iG1iv4Pl7R_lXptSb_5UcGTVJXXOL8_bVZRUe57rVAA\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "max-age=0, private, must-revalidate"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/api/v1/auth_users\" -d '{\"email\":\"aa@aa.aa\",\"password\":\"123321123\"}' -X POST \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"http://localhost:3000/api/v1/auth_users\" -d '{\"email\":\"aa@aa.aa\",\"password\":\"123321123\"}' -X POST \\\n\t-H \"Accept: application/json\"",
+      "request_headers_text": "Accept: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8\nCache-Control: max-age=0, private, must-revalidate"
     }
   ]
 }

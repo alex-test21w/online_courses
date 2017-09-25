@@ -29,7 +29,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/auth_tokens",
-      "request_body": "service_name=twitter&access_token=526b2d4bc58ef711a87514a5&secret_key=0886fc334c0d236d002dfc88",
+      "request_body": "service_name=twitter&access_token=72ed3a2b86c280d594733178&secret_key=6567e0540186b2b16a8dc06f",
       "request_headers": {
         "Accept": "application/json"
       },
@@ -38,13 +38,16 @@
       "request_content_type": "application/x-www-form-urlencoded",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNSwiZXhwIjoxNTA2OTE2NDYzfQ.SOMY5-6zR27cinu7NYj-SSzcsBkxFYy339RSdDh27Ho\"\n}",
+      "response_body": "{\n  \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1MDczNTEyMDV9.IrmPpUseoTvqu-tO6-7dNDQ5HLscTII4j_q_HF-5E_g\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "max-age=0, private, must-revalidate"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/api/v1/auth_tokens\" -d 'service_name=twitter&access_token=526b2d4bc58ef711a87514a5&secret_key=0886fc334c0d236d002dfc88' -X POST \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"http://localhost:3000/api/v1/auth_tokens\" -d 'service_name=twitter&access_token=72ed3a2b86c280d594733178&secret_key=6567e0540186b2b16a8dc06f' -X POST \\\n\t-H \"Accept: application/json\"",
+      "request_headers_text": "Accept: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8\nCache-Control: max-age=0, private, must-revalidate"
     }
   ]
 }

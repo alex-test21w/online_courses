@@ -29,7 +29,7 @@
     {
       "request_method": "POST",
       "request_path": "/api/v1/auth_tokens",
-      "request_body": "service_name=&access_token=7868ea36f030c9f11bca0e13&secret_key=11b2f7ea2fe8899251b8cd9e",
+      "request_body": "service_name=&access_token=7e2b847051a672520c017486&secret_key=c28217f5aad22f335c5a8cce",
       "request_headers": {
         "Accept": "application/json"
       },
@@ -38,13 +38,16 @@
       "request_content_type": "application/x-www-form-urlencoded",
       "response_status": 406,
       "response_status_text": "Not Acceptable",
-      "response_body": "{\n  \"error\": {\n    \"message\": \"Invalid params\"\n  }\n}",
+      "response_body": "{\n  \"error\": {\n    \"message\": \"Please check the accuracy of the input parameters\"\n  }\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "no-cache"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl \"http://localhost:3000/api/v1/auth_tokens\" -d 'service_name=&access_token=7868ea36f030c9f11bca0e13&secret_key=11b2f7ea2fe8899251b8cd9e' -X POST \\\n\t-H \"Accept: application/json\""
+      "curl": "curl \"http://localhost:3000/api/v1/auth_tokens\" -d 'service_name=&access_token=7e2b847051a672520c017486&secret_key=c28217f5aad22f335c5a8cce' -X POST \\\n\t-H \"Accept: application/json\"",
+      "request_headers_text": "Accept: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8\nCache-Control: no-cache"
     }
   ]
 }

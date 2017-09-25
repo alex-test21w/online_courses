@@ -24,13 +24,16 @@
       "request_content_type": null,
       "response_status": 200,
       "response_status_text": "OK",
-      "response_body": "[\n  {\n    \"id\": 6,\n    \"title\": \"Course title 6\",\n    \"picture_url\": \"/assets/fallback/course_picture_thumb_default-8f094c5b2108c814382e5cb2091fbc31a358fcf15bcf1c10d7252169d6724721.jpg\"\n  },\n  {\n    \"id\": 5,\n    \"title\": \"Course title 5\",\n    \"picture_url\": \"/assets/fallback/course_picture_thumb_default-8f094c5b2108c814382e5cb2091fbc31a358fcf15bcf1c10d7252169d6724721.jpg\"\n  }\n]",
+      "response_body": "[\n  {\n    \"id\": 2,\n    \"title\": \"Course title 2\",\n    \"picture_url\": \"/assets/fallback/course_picture_thumb_default-8f094c5b2108c814382e5cb2091fbc31a358fcf15bcf1c10d7252169d6724721.jpg\"\n  },\n  {\n    \"id\": 1,\n    \"title\": \"Course title 1\",\n    \"picture_url\": \"/assets/fallback/course_picture_thumb_default-8f094c5b2108c814382e5cb2091fbc31a358fcf15bcf1c10d7252169d6724721.jpg\"\n  }\n]",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "max-age=0, private, must-revalidate"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl -g \"http://localhost:3000/api/v1/user/courses\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"X-Auth-Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMSwiZXhwIjoxNTA2OTE2NDYzfQ.gfqlH0hUQeTcwnmOEMSyOKxBIxFsFpSp3JWmZ0qPaHc\""
+      "curl": "curl -g \"http://localhost:3000/api/v1/user/courses\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"X-Auth-Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1MDczNTEyMDV9.V-XlvWoZmuMO2O5xpdx1noqOma9wxP9VgGmqZ-3ZA_4\"",
+      "request_headers_text": "Accept: application/json",
+      "request_query_parameters_text": null,
+      "response_headers_text": "Content-Type: application/json; charset=utf-8\nCache-Control: max-age=0, private, must-revalidate"
     }
   ]
 }
