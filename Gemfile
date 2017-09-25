@@ -46,6 +46,7 @@ gem 'sidekiq-unique-jobs'
 gem 'sinatra', require: false
 gem 'redis-namespace', '~> 1.5', '>= 1.5.3'
 gem 'sidekiq-cron'
+gem 'ffaker'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -53,7 +54,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'simplecov'
   gem 'faker'
-  gem 'ffaker'
   gem 'pry-rails', '~> 0.3.6'
   gem 'dotenv-rails', require: 'dotenv/rails-now'
   gem 'letter_opener'
