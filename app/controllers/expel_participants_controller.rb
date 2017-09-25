@@ -7,7 +7,7 @@ class ExpelParticipantsController < ApplicationController
       course_participant.update!(outcast: true)
     else
       redirect_to course_participants_path(course)
-      flash[:error] = "You aren't the creator of the course"
+      flash[:error] = 'You aren\'t the creator of the course'
     end
   end
 

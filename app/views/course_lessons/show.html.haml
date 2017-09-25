@@ -37,7 +37,7 @@
           = image_tag(current_user.picture.thumb, alt: 'User Image', class: 'img img-circle img-sm')
           .comment-text
             - if can? :manage, comment
-              = link_to homework_comment_path(@homework, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-box-tool pull-right' do
+              = link_to lesson_comment_path(@lesson, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-box-tool pull-right' do
                 %i.fa.fa-times
             %span.username #{comment.user.first_name} #{comment.user.last_name}
             = comment.body

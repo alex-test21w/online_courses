@@ -104,30 +104,4 @@ RSpec.feature 'Courses', type: :feature, js: true do
       end
     end
   end
-
-  feature 'Index Page' do
-    context 'check links' do
-      let!(:course) { create_list :course, 2 }
-
-      before do
-        visit courses_path
-
-        click_on course.last.title
-      end
-
-      scenario 'Show participants' do
-        click_on 'Participants'
-
-        expect(page).to have_selector('h1', text: 'participants')
-        expect(page.current_path).to eq course_participants_path(course.last)
-      end
-
-      scenario 'Show lessons' do
-        click_on 'Lessons'
-
-        expect(page).to have_selector('h1', text: 'Lessons')
-        expect(page.current_path).to eq course_lessons_path(course.last)
-      end
-    end
-  end
 end

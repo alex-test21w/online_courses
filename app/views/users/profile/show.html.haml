@@ -37,11 +37,11 @@
                     %tr
                       %th Title
 
-                    - @courses.each do |n|
+                    - @courses.each do |course|
                       %tr
                         %td
-                          = link_to course_path(n.course), method: :get do
-                            = n.course.title
+                          = link_to course_path(course), method: :get do
+                            = course.title
 
           - else
             %h1 You are not subscribed to courses

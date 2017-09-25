@@ -36,7 +36,7 @@ RSpec.resource 'Auth users through twitter', document: :v1 do
 
         expect(status).to eq 406
         expect(response_body).to eq({
-                                       error: { message: 'Invalid params' }
+                                       error: { message: 'Please check the accuracy of the input parameters' }
                                     }.to_json)
       end
     end
@@ -53,7 +53,7 @@ RSpec.resource 'Auth users through twitter', document: :v1 do
 
         expect(status).to eq 401
         expect(response_body).to eq({
-                                       'error': { 'message': 'Not Authenticated' }
+                                       'error': { 'message': 'Not Authorized' }
                                     }.to_json)
       end
     end

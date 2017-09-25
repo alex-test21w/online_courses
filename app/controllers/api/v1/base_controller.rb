@@ -10,7 +10,7 @@ class Api::V1::BaseController < ActionController::Base
   rescue_from Exception, with: :respond_with_internal_error
   rescue_from Exceptions::NotAuthenticatedError, with: :user_not_authenticated
   rescue_from JWT::ExpiredSignature, with: :authentication_timeout
-  rescue_from CanCan::AccessDenied, Exceptions::NotAuthorizedError, with: :respond_with_not_authorized
+  rescue_from CanCan::AccessDenied, Exceptions::NotAuthorizedError, with: :user_not_authorized
 
   rescue_from ActiveRecord::RecordNotFound,
               ActionController::RoutingError,
@@ -74,12 +74,12 @@ class Api::V1::BaseController < ActionController::Base
     render json: response, status: 500
   end
 
-  def respond_with_not_authorized
-    render json: { success: false, message: 'Not Authorized' }, status: 401
-  end
-
   def authentication_timeout
     render_error 'Authentication Timeout', 419
+  end
+
+  def user_not_authorized
+    render_error 'Not Authorized', 401
   end
 
   def user_not_authenticated

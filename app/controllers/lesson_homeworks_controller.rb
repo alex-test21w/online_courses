@@ -10,7 +10,7 @@ class LessonHomeworksController < ApplicationController
         redirect_to course_lesson_path(course_id: course, id: lesson.id)
         flash[:success] = 'The homework was created'
       else
-        flash[:error] = "Description can't be empty"
+        flash[:error] = 'Description can\'t be empty'
         redirect_to course_lesson_path(course_id: course, id: lesson.id)
       end
     end

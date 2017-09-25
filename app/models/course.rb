@@ -8,7 +8,7 @@ class Course < ApplicationRecord
 
   has_many :course_users
   has_many :participants, -> { where('course_users.subscription = ?', true) }, through: :course_users, source: :user
-  has_many :lessons,      -> { order(position: :asc) }
+  has_many :lessons
 
   validates :title, presence: true, length: { maximum: 100 }
 

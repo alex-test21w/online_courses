@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20170921203115) do
     t.string "trackable_type"
     t.string "kind"
     t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["kind"], name: "index_activities_on_kind"
     t.index ["owner_id"], name: "index_activities_on_owner_id"
     t.index ["recipient_id"], name: "index_activities_on_recipient_id"

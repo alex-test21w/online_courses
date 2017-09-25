@@ -4,7 +4,7 @@ class Users::LessonsController < Users::BaseController
   PER_PAGE = 10
 
   def index
-    @lessons = course.lessons.page(params[:page]).per(params[:per_page] || PER_PAGE)
+    @lessons = course.lessons.order_by_position.page(params[:page]).per(params[:per_page] || PER_PAGE)
   end
 
   def new

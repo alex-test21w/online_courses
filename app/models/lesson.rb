@@ -3,6 +3,8 @@ class Lesson < ApplicationRecord
 
   mount_uploader :picture, LessonPictureUploader
 
+  scope :order_by_position, -> { order(position: :asc) }
+
   belongs_to :course
 
   has_many :homeworks

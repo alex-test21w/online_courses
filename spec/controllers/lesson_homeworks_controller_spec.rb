@@ -27,7 +27,7 @@ RSpec.describe LessonHomeworksController, type: :controller do
 
       specify do
         expect(response).to redirect_to course_lesson_path(course_id: course.id, id: lesson.id)
-        expect(flash[:error]).to match "Description can't be empty"
+        expect(flash[:error]).to match 'Description can\'t be empty'
       end
     end
   end
