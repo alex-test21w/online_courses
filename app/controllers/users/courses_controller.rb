@@ -5,7 +5,7 @@ class Users::CoursesController < Users::BaseController
   PER_PAGE = 5
 
   def index
-    @courses = current_user.authored_courses.recent.page(params[:page]).per(params[:per_page] || PER_PAGE)
+    @courses = current_user.authored_courses.recent.page(params[:page]).per(params[:per_page] || PER_PAGE).decorate
   end
 
   def new

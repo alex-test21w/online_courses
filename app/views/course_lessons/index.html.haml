@@ -12,7 +12,7 @@
       - @lessons.each do |lesson|
         %tr
           %td= lesson.title
-          %td= lesson.start_date&.strftime('%d.%m.%Y')
+          %td= lesson.start_date
           %td= image_tag(lesson.picture.thumb)
           %td
             - if can? :manage, course

@@ -4,7 +4,7 @@ class Users::LessonsController < Users::BaseController
   PER_PAGE = 10
 
   def index
-    @lessons = course.lessons.order_by_position.page(params[:page]).per(params[:per_page] || PER_PAGE)
+    @lessons = course.lessons.order_by_position.page(params[:page]).per(params[:per_page] || PER_PAGE).decorate
   end
 
   def new
@@ -42,7 +42,7 @@ class Users::LessonsController < Users::BaseController
   private
 
   def find_lesson
-    @lesson = course.lessons.find(params[:id])
+    @lesson = course.lessons.find(params[:id]).decorate
   end
 
   def course

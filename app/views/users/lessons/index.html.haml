@@ -20,7 +20,7 @@
             = link_to users_course_lesson_path(course, lesson) do
               = lesson.title
           %td= lesson.position
-          %td= lesson.start_date.strftime('%d.%m.%Y')
+          %td= lesson.start_date
           %td= image_tag(lesson.picture.thumb)
           %td= link_to 'Homeworks', users_course_lesson_homeworks_path(course_id: course, lesson_id: lesson), method: :get, class: 'btn btn-default'
           %td= link_to 'edit', edit_users_course_lesson_path(course_id: course, id: lesson), method: :get, class: 'btn btn-default'

@@ -7,7 +7,7 @@ class CourseLessonsController < ApplicationController
   PER_PAGE = 10
 
   def index
-    @lessons = course.lessons.order_by_position.page(params[:page]).per(params[:per_page] || PER_PAGE)
+    @lessons = course.lessons.order_by_position.page(params[:page]).per(params[:per_page] || PER_PAGE).decorate
   end
 
   def show
