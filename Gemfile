@@ -80,7 +80,6 @@ group :test do
   gem 'capybara-screenshot'
   gem 'capybara-webkit'
   gem 'database_cleaner'
-  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
