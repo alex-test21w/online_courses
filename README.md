@@ -1,4 +1,13 @@
-# OnlineCourses
+# Online courses
+
+## Site:
+```
+https://secure-shore-57650.herokuapp.com
+```
+```
+trainer: trainer@email.co ; 111111
+student: student@email.co ; 111111
+```
 
 ## API documentation:
 ```
