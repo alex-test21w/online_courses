@@ -1,7 +1,9 @@
 require 'ffaker'
 
+include ActiveSupport::Callbacks::ClassMethods
+
 2.times.each do |n|
-  @user = User.create!({
+  user = User.create!({
     email: FFaker::Internet.email,
     password: '111111',
     password_confirmation: '111111'
@@ -10,25 +12,28 @@ require 'ffaker'
   Profile.create!(
     first_name: FFaker::Name.first_name,
     last_name: FFaker::Name.last_name,
-    user: @user
+    user: user
   )
 
-  @user.add_role :trainer if n == 2
+  user.add_role :trainer if n == 1
 
-  puts "#{@user.first_name} #{@user.last_name} was created"
+  puts "User #{user.first_name} #{user.last_name} was created"
 end
 
 10.times.each do
   course = Course.create!({
     title: FFaker::Lorem.sentence(1),
-    user: @user
+    user: User.last
   })
 
-  puts "#{course.title} was created"
+  puts "Course #{course.title} was created"
 end
 
+Lesson.skip_callback(:commit, :after, :send_notifications)
+
 10.times.each do |n|
-  lesson = Lesson.create({
+
+  lesson = Lesson.create!({
     title: FFaker::Lorem.sentence(1),
     position: n,
     description: FFaker::Lorem.paragraphs,
@@ -38,5 +43,5 @@ end
     course: Course.last
   })
 
-  puts "#{lesson.title} was created"
+  puts "Lesson #{lesson.title} was created"
 end
