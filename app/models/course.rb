@@ -12,7 +12,7 @@ class Course < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 100 }
 
-  def lessons_count
+  def lesson_positions
     lessons.size + 1
   end
 

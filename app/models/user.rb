@@ -19,8 +19,6 @@ class User < ApplicationRecord
   has_many :activities_for_me,  class_name: 'Activity', foreign_key: :recipient_id
   has_many :activities_from_me, class_name: 'Activity', foreign_key: :owner_id
 
-  before_save :ensure_authentication_token
-
   delegate :first_name, :last_name, to: :profile, allow_nil: true
 
   accepts_nested_attributes_for :profile
@@ -36,17 +34,5 @@ class User < ApplicationRecord
 
   def expel_in?(course)
     course_users.where(course_id: course.id).first.outcast?
-  end
-
-  def ensure_authentication_token
-    return false unless authentication_token.blank?
-    self.authentication_token = generate_authentication_token
-  end
-
-  def generate_authentication_token
-    loop do
-      token = Devise.friendly_token
-      break token unless User.exists?(authentication_token: token)
-    end
   end
 end
