@@ -1,5 +1,4 @@
 class OmniauthCallbacksController < ApplicationController
-
   def twitter
     process_callback
   end
