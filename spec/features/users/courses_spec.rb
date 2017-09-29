@@ -26,7 +26,7 @@ RSpec.feature 'Courses of user', type: :feature do
         attach_file('course[picture]', "#{Rails.root}/spec/fixtures/pixel.png")
       end
 
-      click_on 'Create Course'
+      expect { click_on('Create Course') }.to change(Course, :count).by(1)
 
       expect(page).to have_content 'New title'
       expect(page.current_path).to eq users_courses_path
@@ -57,12 +57,11 @@ RSpec.feature 'Courses of user', type: :feature do
   feature 'Destroy' do
     let!(:course) { create :course, title: 'Init Title', user: user }
 
-    before do
-      visit users_courses_path
-      click_on 'delete'
-    end
+    before { visit users_courses_path }
 
     specify do
+      expect { click_on('delete') }.to change(Course, :count).by(-1)
+
       expect(page).to have_content 'No Courses'
       expect(page).to_not have_content 'Init Title'
       expect(page.current_path).to eq users_courses_path
