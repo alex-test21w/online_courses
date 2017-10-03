@@ -9,7 +9,7 @@ class SocialServices::Base
     if PROVIDERS.include?(service)
       "SocialServices::#{service}".classify.constantize
     else
-      raise "Service name #{service_name} not found"
+      raise Exceptions::ServiceNotFoundError
     end
   end
 end
