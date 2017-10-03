@@ -1,10 +1,7 @@
 class Api::V1::AuthTokensController < Api::V1::BaseController
   skip_before_action :authenticate_request!
 
-  rescue_from Twitter::Error, Exception do |e|
-    render_error(e.message, 406)
-  end
-
+  rescue_from Exceptions::ServiceNotFoundError, with: :service_not_found
   rescue_from Twitter::Error::Unauthorized, Exceptions::NotAuthorizedError, with: :user_not_authorized
 
   def create
@@ -25,6 +22,10 @@ class Api::V1::AuthTokensController < Api::V1::BaseController
 
   def authenticate_through_social_networks
     api_client = SocialServices::Base.service_for(params[:service_name]).new(params[:access_token], params[:secret_key])
-    api_client.authenticate if api_client.present?
+    api_client.authenticate
+  end
+
+  def service_not_found
+    render_error 'Service name not found', 406
   end
 end
