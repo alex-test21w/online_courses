@@ -30,7 +30,7 @@
         "Cache-Control": "max-age=0, private, must-revalidate"
       },
       "response_content_type": "application/json; charset=utf-8",
-      "curl": "curl -g \"http://localhost:3000/api/v1/user/courses\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"X-Auth-Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1MDczNTEyMDV9.V-XlvWoZmuMO2O5xpdx1noqOma9wxP9VgGmqZ-3ZA_4\"",
+      "curl": "curl -g \"http://localhost:3000/api/v1/user/courses\" -X GET \\\n\t-H \"Accept: application/json\" \\\n\t-H \"X-Auth-Token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1MDk2OTkwMzZ9.uppyso3cZ3XfEkkMjP6VYaSQ2Q8krYdAbQKz1sAIqHM\"",
       "request_headers_text": "Accept: application/json",
       "request_query_parameters_text": null,
       "response_headers_text": "Content-Type: application/json; charset=utf-8\nCache-Control: max-age=0, private, must-revalidate"

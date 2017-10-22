@@ -33,7 +33,7 @@
       "request_content_type": "application/json",
       "response_status": 201,
       "response_status_text": "Created",
-      "response_body": "{\n  \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE1MDczNTEyMDV9.iG1iv4Pl7R_lXptSb_5UcGTVJXXOL8_bVZRUe57rVAA\"\n}",
+      "response_body": "{\n  \"auth_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMywiZXhwIjoxNTA5Njk5MDM3fQ.hUMisT6m2ldBfsicphzhgHLPt_k79eBoWjSaBTyxPzI\"\n}",
       "response_headers": {
         "Content-Type": "application/json; charset=utf-8",
         "Cache-Control": "max-age=0, private, must-revalidate"

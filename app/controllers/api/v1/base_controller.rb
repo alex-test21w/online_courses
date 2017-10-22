@@ -3,14 +3,12 @@ class Api::V1::BaseController < ActionController::Base
 
   respond_to :json
 
-  attr_reader :current_user
-
-  before_action :authenticate_request!
-
   rescue_from Exception, with: :respond_with_internal_error
   rescue_from Exceptions::NotAuthenticatedError, with: :user_not_authenticated
   rescue_from JWT::ExpiredSignature, with: :authentication_timeout
   rescue_from CanCan::AccessDenied, Exceptions::NotAuthorizedError, with: :user_not_authorized
+  rescue_from Exceptions::ServiceNotFoundError, with: :service_not_found
+  rescue_from Twitter::Error::Unauthorized, Exceptions::NotAuthorizedError, with: :user_not_authorized
 
   rescue_from ActiveRecord::RecordNotFound,
               ActionController::RoutingError,
@@ -84,5 +82,9 @@ class Api::V1::BaseController < ActionController::Base
 
   def user_not_authenticated
     render_error 'Not Authenticated', 401
+  end
+
+  def service_not_found
+    render_error 'Service name is not found', 406
   end
 end

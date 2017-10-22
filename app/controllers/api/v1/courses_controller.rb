@@ -1,6 +1,4 @@
 class Api::V1::CoursesController < Api::V1::BaseController
-  skip_before_action :authenticate_request!
-
   def index
     courses = Course.recent
 

@@ -1,5 +1,4 @@
 require 'acceptance_helper'
-include AuthHelper
 
 RSpec.resource 'Auth users', document: :v1 do
   let(:user)   { create :user, email: 'aa@aa.aa', password: '123321123' }

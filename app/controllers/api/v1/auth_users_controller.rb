@@ -1,24 +1,19 @@
 class Api::V1::AuthUsersController < Api::V1::BaseController
-  skip_before_action :authenticate_request!
-
   def create
-    if params[:email].present? && params[:password].present?
-      auth_token = authenticate_by_email
+    interactor = AuthUser.call(auth_params)
 
-      if auth_token.present?
-        respond_with_success({ auth_token: auth_token }, 201)
-      else
-        raise Exceptions::NotAuthenticatedError
-      end
+    if interactor.success?
+      raise Exceptions::NotAuthenticatedError unless interactor.token.present?
+
+      respond_with_success({ auth_token: interactor.token }, 201)
     else
-      render_error 'Invalid email or password', 406
+      render_error interactor.error, 406
     end
   end
 
   private
 
-  def authenticate_by_email
-    user = User.find_by_email(params[:email])
-    auth_token(user.id) if user.present? && user.valid_password?(params[:password])
+  def auth_params
+    params.permit(:password, :email)
   end
 end
